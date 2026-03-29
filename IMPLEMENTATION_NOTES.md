@@ -1,68 +1,48 @@
-# KGG4SE Framework — Full Implementation Notes
+# KGG4SE-RL — Implementation Notes
 
 ## Overview
 
-**KGG4SE** (Knowledge Graph Generation for Software Engineering) is a thesis
-framework that automatically extracts, structures, and repairs a domain-specific
-OWL knowledge graph from automotive-electronics text corpora using:
+**KGG4SE-RL** (Knowledge Graph Generation for Software Engineering with Reinforcement Learning) is a thesis framework that automatically builds and repairs a domain-specific OWL Knowledge Graph from automotive-electronics text corpora using:
 
-1. **LLM-based triple extraction** (GPT-4o-mini or local llama3/Ollama)
-2. **Ontology alignment** against a BFO-based automotive ontology
-3. **Reasoner-based consistency checking** (Konclude / HermiT)
-4. **Deep Q-Network (DQN) reinforcement learning** to repair OWL violations
-5. **Human-in-the-loop phased training** for cold-start bootstrapping
+1. **LLM-based triple extraction** — GPT-4o-mini or local Llama 3 (via Ollama)
+2. **Ontology alignment** — fuzzy matching against a BFO-based automotive ontology
+3. **Reasoner-based consistency checking** — Konclude (default) or HermiT
+4. **Deep Q-Network (DQN) reinforcement learning** — repairs OWL violations automatically
+5. **Human-in-the-loop phased training** — bootstraps the agent before handing control over
 
 ---
 
-## Architecture
+## Architecture Overview
 
 ```
+corpus.csv
+    │
+    ▼  Step 1 — prepare-corpus
 corpus.txt
     │
-    ▼  [Step 1] generate_triples  (LLM: GPT-4o-mini or llama3)
-corpus_triples.json   (raw Subject|Predicate|Object triples)
+    ▼  Step 2 — generate-triples   (LLM: GPT-4o-mini or Llama 3)
+corpus_triples.json
     │
-    ▼  [Step 2] clean_triples     (garbage filter, alias normalise)
+    ▼  Step 3 — clean-triples
 corpus_triples_cleaned.json
     │
-    ▼  [Step 3] align_triples     (fuzzy ontology alignment)
-sample_corpus_aligned_triples.ttl  +  alignment_report.csv
+    ▼  Step 4 — align-triples      (fuzzy ontology alignment)
+aligned_triples.ttl  +  alignment_report.csv
     │
-    ▼  [Step 4] build_kg          (merge with base ontology)
-merged_kg.owl  ← this is the KG to repair (contains injected violations)
+    ▼  Step 5 — build-kg           (merge with base ontology)
+merged_kg.owl
     │
-    ▼  [Step 5] run_reasoner      (Konclude/HermiT consistency check)
+    ▼  Step 6 — run-reasoner       (Konclude / HermiT)
 inconsistency report: {unsat_classes, disjoint_violations, ...}
     │
-    ▼  [Step 6] RL Repair         (DQN agent — RepairEnv)
-repaired_step_N.owl  (OWL after each repair action)
+    ▼  Step 7 — parse-reasoner
+reasoned_triples.json
     │
-    ▼  [Step 7] report_quality    (plots + text report)
-outputs/reports/*.png
-```
-
----
-
-## Quick-Start Commands
-
-```cmd
-:: Step 1: Set OpenAI key (Windows CMD)
-set OPENAI_API_KEY=sk-...
-
-:: Step 2: Generate triples
-python -m pipeline generate_triples
-
-:: Step 3: Run RL training (fully automated — no prompts)
-python -m rl.train_repair --no-human
-
-:: Step 4: Run RL training with custom parameters
-python -m rl.train_repair --no-human --episodes 50 --max-steps 15
-
-:: Step 5: Generate all reports and plots
-python report_quality.py
-
-:: Step 6: Quick integration test (1 episode)
-python -m rl.train_repair --test
+    ▼  Step 8 — check-quality
+quality_report.json
+    │
+    ▼  Step 9 — repair-kg          (DQN RL agent)
+dqn_repair_final.pt  +  repair_trace.jsonl
 ```
 
 ---
@@ -70,300 +50,323 @@ python -m rl.train_repair --test
 ## Module Descriptions
 
 ### `config.py`
-Central configuration singleton. All paths, LLM settings, and RL hyperparameters
-live here. Import anywhere — all modules rely on this.
+
+Central configuration singleton. All paths, LLM settings, and RL hyperparameters live here. Every module imports this — do not hardcode paths elsewhere.
 
 Key settings:
-| Setting | Value | Notes |
+
+| Setting | Default | Description |
 |---|---|---|
-| `USE_OPENAI` | `True` | Route triple extraction through OpenAI API |
-| `OPENAI_MODEL` | `"gpt-4o-mini"` | Best value for thesis (cheap + accurate) |
-| `DEFAULT_REASONER` | `"konclude"` | Faster than HermiT for OWL 2 EL |
-| `RL_EPISODES` | `50` | Increased from 20 — DQN needs 50–100+ |
-| `RL_MAX_STEPS_PER_EPISODE` | `15` | Reduced from 20 for faster episodes |
-| `RL_EPSILON_DECAY` | `0.994` | Per-step (was per-episode — see Bug Fix #1) |
-| `RL_HUMAN_SUPERVISED_EPISODES` | `3` | Phase 1 count |
-| `RL_HUMAN_FIRST_EPISODES` | `5` | Phase 2 count |
+| `USE_OPENAI` | `True` | Route LLM calls to OpenAI API |
+| `OPENAI_MODEL` | `"gpt-4o-mini"` | OpenAI model for triple extraction |
+| `MODEL_NAME` | `"llama3"` | Ollama model (used when `USE_OPENAI = False`) |
+| `DEFAULT_REASONER` | `"konclude"` | OWL reasoner (faster than HermiT for large ontologies) |
+| `FUZZY_CUTOFF` | `85` | Minimum fuzzy match score for alignment (0–100) |
+| `RL_EPISODES` | `50` | Total DQN training episodes |
+| `RL_MAX_STEPS_PER_EPISODE` | `15` | Max repair actions allowed per episode |
+| `RL_EPSILON_DECAY` | `0.994` | Exploration decay rate per step |
+| `RL_HUMAN_SUPERVISED_EPISODES` | `3` | Phase 1 episode count |
+| `RL_HUMAN_FIRST_EPISODES` | `5` | Phase 2 episode count |
+
+---
 
 ### `llm_kg/generate_triples.py`
-Extracts `Subject | Predicate | Object` triples from corpus text.
 
-- **`_query_openai()`** — calls OpenAI Chat Completions API at temperature=0.0
-- **`_query_ollama()`** — calls local Ollama instance (llama3)
+Extracts `Subject | Predicate | Object` triples from plain text using an LLM.
+
+- **`_query_openai()`** — calls OpenAI Chat Completions API at `temperature=0.0`
+- **`_query_ollama()`** — calls local Ollama instance
 - Routing: `if config.USE_OPENAI: _query_openai() else _query_ollama()`
-- Temperature=0.0 ensures deterministic, reproducible extraction
+- Temperature is fixed at 0.0 for deterministic, reproducible extraction
+- Garbage terms are filtered; a fallback triple is emitted if the LLM returns nothing
+
+---
+
+### `Scripts/align_triples.py` — `AlignTriplesStep`
+
+Maps each triple's subject, predicate, and object to ontology URIs.
+
+**Alignment logic per triple field:**
+1. Check manual CSV override (`config/relation_map.csv` or `config/entity_map.csv`)
+2. Try exact string match against the ontology index
+3. Try fuzzy match via RapidFuzz (threshold: `FUZZY_CUTOFF`)
+4. If `ALLOW_CREATE_INDIVIDUALS = True`, mint a new individual URI for unmatched entities
+
+Class URIs are converted to individual URIs automatically. Domain and range constraints from the ontology are checked; triples that cannot satisfy them are skipped.
+
+---
+
+### `reasoning/reasoner_wrapper.py`
+
+Unified interface to both OWL reasoners. Both return the same dict structure:
+
+```python
+{
+    "is_consistent":              bool,
+    "unsat_classes":              list[str],
+    "disjoint_violations":        list[tuple],
+    "transitive_disjoint_violations": list[tuple],
+    "all_issues": {
+        "by_type":         dict,
+        "total_violations": int
+    }
+}
+```
+
+**Konclude** (default) — native binary, OWL 2 EL, no JVM required, faster.
+**HermiT** — full OWL 2 DL, more thorough, requires Java.
+
+---
+
+### `reasoning/axiom_extractor.py`
+
+Heuristic evidence extractor. Given an inconsistent OWL file, it searches the RDF graph to identify the most likely root cause:
+
+- Disjoint class violations
+- Domain violations (individual typed to wrong class for a property)
+- Range violations (literal or entity of wrong type used as object)
+- Class-used-as-individual errors
+- Unsatisfiable class membership
+
+Returns a structured evidence dict consumed by `RepairEnv` to build the state vector.
+
+---
+
+### `qa/repair_candidates.py`
+
+Takes the reasoner report and axiom evidence and generates a list of candidate repair actions. Each candidate includes:
+
+- `action_type` — e.g. `remap_entity`, `drop_entity`, `add_type_assertion`
+- `target` — the IRI of the entity to act on
+- `detail` — the specific change to make
+- `risk` — estimated risk score (0–5)
+
+Supports 10+ action types covering all major OWL 2 violation categories.
+
+---
+
+### `qa/apply_fix.py`
+
+Applies a single repair action to the RDF graph. Each action type modifies the in-memory graph and serializes the result to a new OWL file in `outputs/rl_repair_steps/`.
+
+---
 
 ### `rl/env_repair.py` — `RepairEnv`
-OpenAI Gym-compatible environment wrapping the OWL repair process.
 
-**State vector (18 dimensions):**
+OpenAI Gym-compatible environment wrapping the full repair loop.
+
+**State vector — 18 dimensions:**
+
 | Index | Feature | Description |
 |---|---|---|
-| 0–9 | Error type one-hot | 10 violation categories |
-| 10 | Num actions | Number of available repair actions (normalised 0–1) |
-| 11 | Low-risk actions | Count of low-risk actions (normalised) |
-| 12 | Has evidence | Binary: does the error have supporting evidence? |
-| 13 | Step progress | `step / max_steps` |
-| 14 | Has entity IRI | Binary: is a concrete IRI involved? |
-| **15** | **Queue progress** | `remaining_violations / initial_violations` |
-| **16** | **Last step improved** | Binary momentum signal (1 if previous step helped) |
-| **17** | **Min action risk** | Safest available action risk score (normalised /5) |
-
-Features 15–17 were added to give the agent progress awareness, momentum, and
-risk sensitivity — preventing random-walk behaviour late in episodes.
+| 0–9 | Error type encoding | One per violation category (10 types) |
+| 10 | Num actions | Available repair actions, normalised 0–1 |
+| 11 | Low-risk actions | Count of low-risk actions, normalised |
+| 12 | Has evidence | Binary: axiom extractor found concrete evidence |
+| 13 | Step progress | `current_step / max_steps` |
+| 14 | Has entity IRI | Binary: a concrete IRI is involved in the violation |
+| 15 | Queue progress | `remaining_violations / initial_violations` |
+| 16 | Last step improved | Binary momentum: 1 if previous action reduced violations |
+| 17 | Min action risk | Safest available action risk score, normalised (÷5) |
 
 **Key methods:**
-- `reset()` — loads fresh copy of `base_owl`, runs reasoner, builds error queue
-- `step(action_idx)` — applies fix, re-runs reasoner, returns (state, reward, done, info)
-- `get_current_action_count()` — number of actions for current error
+- `reset()` — loads a fresh copy of `base_owl`, runs the reasoner, builds the error queue, returns initial state
+- `step(action_idx)` — applies the selected repair action, re-runs the reasoner, computes reward, returns `(state, reward, done, info)`
 - `state_dim()` — returns 18
+- `action_space_n()` — returns the max number of repair actions
+
+---
 
 ### `rl/dqn_agent.py` — `DQN_Agent`
-Standard Double-DQN with experience replay.
 
-- Input: 18-dim state vector
-- Output: Q-values for up to `output_dim` actions
-- Epsilon-greedy exploration with configurable decay
-- Target network updated every `RL_TARGET_UPDATE_INTERVAL` episodes
-- `decay_epsilon()` called per-step in the training loop
+Double DQN with prioritized experience replay and action masking.
+
+- **Policy network** and **target network** — both are instances of `dqn_model.py` (architecture: `input_dim → 256 → 128 → 64 → output_dim`)
+- **Action masking** — Q-values for actions beyond `num_valid_actions` are masked to −∞ so the agent never selects invalid actions
+- **Soft target updates** — Polyak averaging (τ = 0.005) every step instead of hard copy every N episodes
+- **ε-greedy exploration** — epsilon decays per step from 1.0 down to `epsilon_min = 0.05`
+
+---
+
+### `rl/replay_buffer.py` — `PrioritizedReplayBuffer`
+
+Prioritized Experience Replay (PER). Transitions with higher TD-error are sampled more often, so the agent learns more from surprising or impactful steps.
+
+- `alpha = 0.6` — controls how much priority is used (0 = uniform)
+- `beta` anneals from 0.4 → 1.0 over the full training run (importance sampling correction)
+- Expert transitions (human actions) are pushed with elevated priority via `push_expert()`
+
+---
 
 ### `rl/train_repair.py` — Training Loop
-Main entry point for RL training. Three-phase curriculum:
 
-**Phase 1 — Human Supervised** (`RL_HUMAN_SUPERVISED_EPISODES` = 3 episodes):
-Human selects every action. RL observes and stores all transitions (+ replay boost).
+Main entry point for RL training. Implements the three-phase curriculum.
 
-**Phase 2 — Human First-Step** (`RL_HUMAN_FIRST_EPISODES` = 5 episodes):
-Human selects only the first action per episode. RL handles all subsequent steps.
+**Phase 1 — Human Supervised** (episodes 1 to `RL_HUMAN_SUPERVISED_EPISODES`):
+Human selects every repair action. The agent observes all transitions and stores them in the replay buffer with elevated priority.
 
-**Phase 3 — RL Automated** (remaining 42 episodes):
-Fully autonomous. Human only asked when Q-value confidence margin < threshold.
+**Phase 2 — Human First-Step** (next `RL_HUMAN_FIRST_EPISODES` episodes):
+Human selects only the first action per episode. The agent handles all subsequent steps autonomously.
 
-**CLI flags:**
-```
---no-human          Disable ALL human input (scripted or automated)
---scripted FILE     Load action indices from JSON for unattended runs
---episodes N        Override RL_EPISODES
---max-steps N       Override RL_MAX_STEPS_PER_EPISODE
---reasoner hermit   Switch reasoner (default: konclude)
---owl PATH          Override base OWL path
---test              Run one test episode instead of full training
-```
+**Phase 3 — RL Automated** (remaining episodes):
+Fully autonomous. Human is only prompted when the agent's Q-value confidence margin falls below the threshold.
 
-**Training history saved** to `outputs/models/training_history.json`:
+**CLI flags for `rl.train_repair`:**
+
+| Flag | Description |
+|---|---|
+| `--episodes N` | Override `RL_EPISODES` |
+| `--max-steps N` | Override `RL_MAX_STEPS_PER_EPISODE` |
+| `--no-human` | Disable all human input (Phase 3 only) |
+| `--scripted FILE` | Load pre-recorded human action indices from JSON |
+| `--reasoner hermit` | Switch to HermiT (default: konclude) |
+| `--owl PATH` | Override the input OWL file path |
+| `--test` | Run a single test episode |
+
+**Training history** is saved after each run to `outputs/models/training_history.json`:
+
 ```json
 {
-  "config": { "episodes": 50, "max_steps": 15, ... },
+  "config": { "episodes": 50, "max_steps": 15, "reasoner": "konclude" },
   "per_episode": [
     {
-      "episode": 1, "phase": "human_supervised",
-      "steps": 8, "reward": 12.5, "consistent": true,
-      "epsilon": 0.94, "avg_loss": 0.023,
+      "episode": 1,
+      "phase": "human_supervised",
+      "steps": 8,
+      "reward": 12.5,
+      "consistent": true,
+      "epsilon": 0.94,
+      "avg_loss": 0.023,
       "success_rate_so_far": 1.0,
-      "start_unsat": 2, "start_disj": 1,
-      "end_unsat": 0, "end_disj": 0
-    }, ...
+      "start_unsat": 2,
+      "start_disj": 1,
+      "end_unsat": 0,
+      "end_disj": 0
+    }
   ]
 }
 ```
 
-### `rl/human_loop.py` — `HumanLoop`
-Manages human-in-the-loop feedback during training.
-
-- `scripted_actions_file` kwarg: pre-load action indices from JSON file
-- `interactive_mode = False` (set by `--no-human`) skips all `input()` calls
-- Scripted queue pops entries in order; `null` entries defer to RL
+---
 
 ### `rl/reward_functions.py` — Reward Function
-```
-+10.0   KG becomes fully consistent (major milestone)
-+2.0    per disjoint violation fixed
-+2.0    per unsatisfiable class resolved
-+1.0    per transitive disjoint resolved
--1.0    per violation introduced (regression penalty)
--0.5    neutral step (no-op penalty — added in this session)
-```
-The **neutral-step penalty** is critical: without it, the agent learns to
-take random no-op actions without penalty, wasting repair budget.
+
+| Event | Reward |
+|---|---|
+| KG becomes fully consistent | +10.0 |
+| Each disjoint violation fixed | +2.0 |
+| Each unsatisfiable class resolved | +2.0 |
+| Each transitive disjoint resolved | +1.0 |
+| Each violation introduced (regression) | −1.0 |
+| Neutral step (no change to violations) | −0.5 |
+| Each step taken (efficiency penalty) | −0.1 |
+
+---
+
+### `rl/human_loop.py` — `HumanLoop`
+
+Manages human interaction during training.
+
+- **Interactive mode** — prompts the user in the terminal to select an action index
+- **Scripted mode** — loads action indices from a JSON file and pops them in order; `null` entries defer to the RL agent
+- **Disabled** — when `--no-human` is passed, `interactive_mode = False` and the agent always acts autonomously
+
+Human decisions are logged to `outputs/models/human_feedback.jsonl` and can be replayed as scripted actions in future runs.
+
+---
 
 ### `rl/diff_tracker.py` — `DiffTracker`
-Logs step-by-step OWL diffs to `outputs/rl_repair_traces/repair_trace.jsonl`.
-Each JSONL line records: step_id, action, reward, metrics, triple count delta.
 
-### `reasoning/reasoner_wrapper.py`
-Wraps both HermiT (Java JAR) and Konclude (native binary) reasoners.
-Returns a unified dict:
-```python
+Logs step-by-step OWL graph changes to `outputs/rl_repair_traces/repair_trace.jsonl`. Each line records:
+
+```json
 {
-    "is_consistent": bool,
-    "unsat_classes": [...],
-    "disjoint_violations": [...],
-    "transitive_disjoint_violations": [...],
-    "all_issues": { "by_type": {...}, "total_violations": N }
+  "step_id": "0019",
+  "episode": 3,
+  "action_type": "remap_entity",
+  "reward": 2.0,
+  "metrics": { "unsat": 1, "disjoint": 0 },
+  "triple_count_delta": -3
 }
 ```
 
+---
+
 ### `report_quality.py` — Quality Report Generator
-Generates all plots and the text report after training. Run with:
-```
+
+Generates plots and a quality report after training. Run standalone:
+
+```bash
 python report_quality.py
-python report_quality.py --before outputs/intermediate/merged_kg.owl \
-                         --after  outputs/rl_repair_steps/repaired_step_9.owl \
-                         --history outputs/models/training_history.json \
-                         --raw-triples outputs/intermediate/corpus_triples.json \
-                         --cleaned-triples outputs/intermediate/corpus_triples_cleaned.json \
-                         --alignment-report outputs/reports/alignment_report.csv
+
+# With custom paths
+python report_quality.py \
+  --before          outputs/intermediate/merged_kg.owl \
+  --after           outputs/rl_repair_steps/repaired_step_final.owl \
+  --history         outputs/models/training_history.json \
+  --raw-triples     outputs/intermediate/corpus_triples.json \
+  --cleaned-triples outputs/intermediate/corpus_triples_cleaned.json \
+  --alignment-report outputs/reports/alignment_report.csv
 ```
 
 ---
 
-## All Implemented Improvements
+## Generated Plots
 
-### Bug Fix #1 — Epsilon Decay (Critical)
-**Problem:** `agent.decay_epsilon()` was called once per episode. After 50 episodes
-at decay=0.995: epsilon ≈ 0.78 (agent 78% random). After 20 episodes: 0.90.
-The agent was nearly random for the entire training run — this was the primary
-cause of ~55% accuracy.
-
-**Fix:** Moved `agent.decay_epsilon()` inside the step loop (per-step decay).
-Changed decay rate to `RL_EPSILON_DECAY = 0.994` per step.
-
-With 50 episodes × 10 avg steps = ~500 steps:
-epsilon at end = 0.994^500 ≈ 0.05 (hits minimum — agent fully exploits learned policy).
-
-### Bug Fix #2 — `--no-human` Still Prompting
-**Problem:** Even with `--no-human` flag and phase counts set to 0, Phase 3
-called `should_ask_human()` which returned True when Q-value margin < 0.65
-(always early in training — agent never confident).
-
-**Fix:** Added `no_human` kwarg to `train_repair()`. When True, skips
-`human_loop.enable_interactive()` entirely, so `interactive_mode` stays False
-and `should_ask_human()` always returns False.
-
-### Improvement #1 — OpenAI API Integration
-- Added `_query_openai()` in `llm_kg/generate_triples.py`
-- `USE_OPENAI = True` in `config.py` routes to OpenAI instead of Ollama
-- Temperature = 0.0 for deterministic extraction
-- GPT-4o-mini follows the structured prompt far more strictly than local llama3:
-  fewer garbage triples-> fewer ontology violations-> smaller repair task for RL
-
-### Improvement #2 — Training Configuration
-| Parameter | Old | New | Reason |
-|---|---|---|---|
-| `RL_EPISODES` | 20 | 50 | DQN needs 50–100+ to converge |
-| `RL_MAX_STEPS_PER_EPISODE` | 20 | 15 | Faster episodes, more variety |
-| `RL_HUMAN_SUPERVISED_EPISODES` | 5 | 3 | More episodes for RL |
-| `RL_HUMAN_FIRST_EPISODES` | 10 | 5 | Only 8 human eps of 50 total |
-
-### Improvement #3 — Expanded RL State (15-> 18 dims)
-Three new features improve agent decision-making:
-- **Queue progress [15]**: Tells agent how much work remains
-- **Last step improved [16]**: Momentum — encourages continuing good actions
-- **Min action risk [17]**: Agent can prefer low-risk actions under uncertainty
-
-### Improvement #4 — Neutral-Step Penalty (-0.5)
-Without this, the agent accumulates 0.0 reward for no-op actions and does not
-learn to avoid them. The -0.5 penalty makes wasted steps costly.
-
-### Improvement #5 — Training History Logging
-Saves `outputs/models/training_history.json` after each run with per-episode:
-reward, consistency flag, epsilon, avg DQN loss, cumulative accuracy,
-start/end unsat counts, start/end disjoint violation counts.
-
-### Improvement #6 — Scripted Actions for Unattended Runs
-`outputs/models/scripted_actions.json` contains 110 zero-indices (default
-"choose first action" for all human-phase prompts). Created with:
-```
-python -m rl.train_repair --scripted outputs/models/scripted_actions.json
-```
-
----
-
-## Generated Plots (14 total)
-
-### KG Extraction Quality
-| File | Description |
+### Extraction Quality
+| Plot | Description |
 |---|---|
-| `p5_extraction_alignment_quality.png` | Precision/Recall/F1 at Raw→Cleaned→Aligned stages, triple count funnel, alignment status pie |
+| `p5_extraction_alignment_quality.png` | Precision/Recall/F1 at raw → cleaned → aligned stages, triple count funnel, alignment status breakdown |
 
 ### RL Repair Effectiveness
-| File | Description |
+| Plot | Description |
 |---|---|
 | `p1_reward_vs_episode.png` | Total reward per episode with rolling average |
-| `p2_unsat_vs_episode.png` | Unsatisfiable class count at episode end |
-| `p3_disj_vs_episode.png` | Disjoint violation count at episode end |
-| `p4_errors_before_after.png` | Error counts before vs after RL with % reduction |
-| `p6_pipeline_quality_line.png` | Violations across Before RL-> Ep1-> Final checkpoints |
+| `p2_unsat_vs_episode.png` | Unsatisfiable class count at end of each episode |
+| `p3_disj_vs_episode.png` | Disjoint violation count at end of each episode |
+| `p4_errors_before_after.png` | Error counts before vs. after RL with % reduction |
+| `p6_pipeline_quality_line.png` | Violations across Before RL → Episode 1 → Final |
 | `p7_repair_efficiency.png` | Steps per episode, error reduction rate, triple delta |
 
 ### Training Diagnostics
-| File | Description |
+| Plot | Description |
 |---|---|
 | `training_accuracy_reward.png` | Cumulative accuracy % + per-episode reward |
-| `training_loss_epsilon.png` | DQN loss curve + epsilon decay |
-| `accuracy_by_phase.png` | Success rate broken down by Phase 1/2/3 |
+| `training_loss_epsilon.png` | DQN loss curve + epsilon decay over steps |
+| `accuracy_by_phase.png` | Success rate broken down by Phase 1 / 2 / 3 |
 
 ### Repair Summary
-| File | Description |
+| Plot | Description |
 |---|---|
-| `violation_comparison.png` | Violation type counts before vs after |
+| `violation_comparison.png` | Violation type counts before vs. after repair |
 | `repair_steps.png` | Reward + violation delta + triple count per repair step |
-| `action_distribution.png` | Pie chart of action types used |
-| `kg_stats_comparison.png` | KG triples/entities before vs after |
-| `before_after_summary.png` | Dashboard: violations + accuracy trend + consistency status |
-| `precision_recall_f1.png` | Repair P/R/F1 + TP/FP/FN breakdown |
+| `action_distribution.png` | Pie chart of action types used across training |
+| `kg_stats_comparison.png` | KG triple and entity counts before vs. after |
+| `before_after_summary.png` | Dashboard: violations + accuracy trend + consistency |
+| `precision_recall_f1.png` | Repair precision, recall, F1 + TP/FP/FN breakdown |
 
 ---
 
 ## Precision / Recall / F1 Definitions
 
-### Pipeline-Level (Extraction Quality)
+### Extraction Quality (Pipeline-level)
+
 | Stage | Precision | Recall |
 |---|---|---|
-| Raw LLM | 1.0 (baseline) | 1.0 (baseline) |
-| Cleaned | kept/raw | kept/raw |
-| Aligned | ok-aligned/all-aligned | ok-aligned/raw |
+| Raw LLM output | 1.0 (baseline) | 1.0 (baseline) |
+| After cleaning | kept / raw | kept / raw |
+| After alignment | ok-aligned / all-aligned | ok-aligned / raw |
 
-### Repair-Level (RL Performance)
+### Repair Quality (RL-level)
+
 | Metric | Formula | Meaning |
 |---|---|---|
-| **TP** | Steps where unsat/disjoint count decreased | Repairs that helped |
-| **FP** | Steps where unsat/disjoint count increased | Repairs that hurt |
-| **FN** | Violations remaining after all repair | What the agent missed |
-| **Precision** | TP / (TP + FP) | Of impactful steps, how many helped? |
-| **Recall** | TP / (TP + FN) | Of all violations, how many were fixed? |
-| **F1** | 2·P·R / (P + R) | Harmonic mean |
-
----
-
-## Reasoner Details
-
-### Konclude (default)
-- Location: `reasoning/Konclude/`
-- OWL 2 EL reasoner — much faster than HermiT for large ontologies
-- Native binary (no JVM overhead)
-- Used via `reasoning/reasoner_wrapper.py`
-
-### HermiT
-- Full OWL 2 DL reasoner — more thorough, supports OWL Full features
-- Slower, requires Java
-- Use with `--reasoner hermit` for thorough final evaluation
-
----
-
-## Results Summary (after all improvements)
-
-With GPT-4o-mini extraction + fixed epsilon decay + 50 episodes:
-
-| Metric | Before Improvements | After |
-|---|---|---|
-| Epsilon at end of training | ~0.90 (90% random) | ~0.05 (95% exploit) |
-| Training episodes | 20 | 50 |
-| Human episodes | 15/20 (75%) | 8/50 (16%) |
-| RL episodes | 5/20 (25%) | 42/50 (84%) |
-| Extraction triple quality | llama3 noisy triples | GPT-4o-mini clean triples |
-| Neutral step penalty | None | −0.5 per no-op |
-| State dimensions | 15 | 18 |
+| **TP** | Steps where violation count decreased | Repairs that helped |
+| **FP** | Steps where violation count increased | Repairs that hurt |
+| **FN** | Violations remaining after all repair steps | What the agent missed |
+| **Precision** | TP / (TP + FP) | Of all impactful steps, how many helped? |
+| **Recall** | TP / (TP + FN) | Of all violations present, how many were fixed? |
+| **F1** | 2 · P · R / (P + R) | Harmonic mean |
 
 ---
 
@@ -371,23 +374,28 @@ With GPT-4o-mini extraction + fixed epsilon decay + 50 episodes:
 
 | File | Role |
 |---|---|
-| `config.py` | Central config (all paths, settings, hyperparameters) |
-| `pipeline.py` | Orchestrates all pipeline steps |
-| `report_quality.py` | Post-training quality report + 14 plots |
-| `test_repair.py` | Quick 1-episode integration test |
+| `pipeline.py` | CLI entry point for all 9 pipeline commands |
+| `config.py` | Central configuration (all paths, settings, hyperparameters) |
+| `report_quality.py` | Post-training quality report and plots |
+| `inject_violations.py` | Injects test violations to evaluate RL repair |
+| `generate_thesis_diagrams.py` | Generates architecture diagrams to `outputs/diagrams/` |
 | `llm_kg/generate_triples.py` | LLM triple extraction (OpenAI / Ollama) |
-| `llm_kg/clean_triples.py` | Garbage filter + alias normalisation |
-| `llm_kg/align_triples.py` | Fuzzy ontology alignment-> aligned TTL |
-| `llm_kg/build_kg.py` | Merge aligned triples with base ontology |
+| `Scripts/clean_triples.py` | Normalisation, deduplication, token filter |
+| `Scripts/align_triples.py` | Fuzzy ontology alignment → aligned TTL |
+| `Scripts/build_kg.py` | Merge aligned triples with base ontology |
+| `Scripts/run_reasoner.py` | Reasoner step wrapper |
 | `reasoning/reasoner_wrapper.py` | Unified Konclude / HermiT interface |
-| `rl/env_repair.py` | RepairEnv (Gym environment for OWL repair) |
-| `rl/dqn_agent.py` | DQN agent (Double-DQN + experience replay) |
-| `rl/train_repair.py` | 3-phase training loop + argparse CLI |
-| `rl/human_loop.py` | Human-in-the-loop feedback (scripted/interactive) |
-| `rl/reward_functions.py` | Reward function (violation-based + no-op penalty) |
-| `rl/apply_fix.py` | Applies repair actions to OWL graph |
+| `reasoning/axiom_extractor.py` | Heuristic inconsistency root-cause finder |
+| `qa/repair_candidates.py` | Generates repair action candidates from reasoner report |
+| `qa/apply_fix.py` | Applies atomic repair actions to the OWL graph |
+| `rl/env_repair.py` | RepairEnv — Gym-compatible RL environment |
+| `rl/dqn_agent.py` | Double DQN agent with action masking |
+| `rl/dqn_model.py` | PyTorch neural network (256 → 128 → 64 → N) |
+| `rl/replay_buffer.py` | Prioritized Experience Replay buffer |
+| `rl/train_repair.py` | 3-phase curriculum training loop + CLI |
+| `rl/human_loop.py` | Human-in-the-loop interface (interactive / scripted) |
+| `rl/reward_functions.py` | Reward shaping (violation-based + efficiency penalty) |
 | `rl/diff_tracker.py` | JSONL trace logger for repair steps |
+| `rl/triple_display.py` | Terminal UI for violations and action choices |
 | `outputs/models/training_history.json` | Per-episode training log |
-| `outputs/models/scripted_actions.json` | Pre-scripted action queue for automation |
-| `outputs/reports/*.png` | Generated plots (14 files) |
-| `IMPLEMENTATION_NOTES.md` | This file |
+| `outputs/rl_repair_traces/repair_trace.jsonl` | Step-level repair trace |
