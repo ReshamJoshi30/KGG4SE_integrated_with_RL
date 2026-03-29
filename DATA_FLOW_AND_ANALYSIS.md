@@ -148,7 +148,7 @@ This document describes the end-to-end data flow through the pipeline, the file 
  │  │  RepairEnv (rl/env_repair.py)                                 │       │
  │  │  reset()  → run reasoner → extract diagnostics → encode state │       │
  │  │  step()   → apply_fix   → re-run reasoner  → compute reward   │       │
- │  │  State: 18-dim vector   Actions: repair candidates list        │       │
+ │  │  State: 18-dim vector   Actions: repair candidates list       │       │
  │  └───────────────────────────────────────────────────────────────┘       │
  │  ┌───────────────────────────────────────────────────────────────┐       │
  │  │  DQN_Agent (rl/dqn_agent.py)                                  │       │
