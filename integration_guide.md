@@ -339,4 +339,3 @@ python pipeline.py repair-kg --episodes 10 --interactive
 
 **IF ALL PASS-> STEP 2 IS COMPLETE!**
 
-Next: Move to Step 3 (already implemented in train_repair.py)
