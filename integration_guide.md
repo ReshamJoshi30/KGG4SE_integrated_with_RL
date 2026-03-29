@@ -36,7 +36,7 @@ copy test_repair.py D:\Thesis\kgg4se_framework_gaurav\kgg4se_framework\test_repa
 test_reasoner.py = Tests reasoners only
 test_repair.py   = Tests full RL repair loop
 
-## CONNECTIONS - ALREADY DONE! ✅
+## CONNECTIONS - ALREADY DONE!  
 
 The RL module is ALREADY CONNECTED to reasoning:
 
@@ -63,16 +63,16 @@ run_reasoner() again
 
 ### Test 1: Verify Imports (1 min)
 ```bash
-python -c "from reasoning.axiom_extractor import extract_inconsistency_explanation; print('✅ axiom_extractor OK')"
-python -c "from qa.repair_candidates import make_repair_candidates; print('✅ repair_candidates OK')"
-python -c "from qa.apply_fix import apply_fix; print('✅ apply_fix OK')"
-python -c "from rl.env_repair import RepairEnv; print('✅ env_repair OK')"
-python -c "from rl.diff_tracker import DiffTracker; print('✅ diff_tracker OK')"
-python -c "from rl.human_loop import HumanLoop; print('✅ human_loop OK')"
-python -c "from rl.train_repair import train_repair; print('✅ train_repair OK')"
+python -c "from reasoning.axiom_extractor import extract_inconsistency_explanation; print('  axiom_extractor OK')"
+python -c "from qa.repair_candidates import make_repair_candidates; print('  repair_candidates OK')"
+python -c "from qa.apply_fix import apply_fix; print('  apply_fix OK')"
+python -c "from rl.env_repair import RepairEnv; print('  env_repair OK')"
+python -c "from rl.diff_tracker import DiffTracker; print('  diff_tracker OK')"
+python -c "from rl.human_loop import HumanLoop; print('  human_loop OK')"
+python -c "from rl.train_repair import train_repair; print('  train_repair OK')"
 ```
 
-**Expected:** All print ✅ messages
+**Expected:** All print   messages
 **If fails:** Missing file - check folder structure
 
 ---
@@ -130,13 +130,13 @@ TESTING RL REPAIR MODULE - ONE EPISODE
 ============================================================
 
 [1/4] Initializing RepairEnv...
-✅ RepairEnv initialized
+  RepairEnv initialized
 
 [2/4] Initializing DQN Agent...
-✅ DQN Agent initialized (state_dim=8, action_dim=10)
+  DQN Agent initialized (state_dim=8, action_dim=10)
 
 [3/4] Initializing DiffTracker...
-✅ DiffTracker initialized-> outputs\rl_repair_traces
+  DiffTracker initialized-> outputs\rl_repair_traces
 
 [4/4] Running test episode (max 5 steps)...
 ------------------------------------------------------------
@@ -161,19 +161,19 @@ Final consistent: True
 Trace file: outputs\rl_repair_traces\repair_trace.jsonl
 Actions taken: ['drop_class_assertion']
 
-✅ TEST COMPLETE
+  TEST COMPLETE
 ```
 
 **What this tests:**
-- RepairEnv initialization ✓
-- DQN Agent creation ✓
-- Evidence extraction ✓
-- Repair candidates generation ✓
-- Action execution ✓
-- Diff tracking ✓
-- Reasoner feedback loop ✓
+- RepairEnv initialization   
+- DQN Agent creation   
+- Evidence extraction   
+- Repair candidates generation   
+- Action execution   
+- Diff tracking   
+- Reasoner feedback loop   
 
-**If it completes:** Everything works! 🎉
+**If it completes:** Everything works! 
 **If fails:** See error message and troubleshoot
 
 ---
@@ -233,10 +233,10 @@ Model saved to: outputs\models
 ```
 
 **What this tests:**
-- Full training loop ✓
-- DQN learning ✓
-- Multi-episode training ✓
-- Model saving ✓
+- Full training loop   
+- DQN learning   
+- Multi-episode training   
+- Model saving   
 
 ---
 
@@ -295,16 +295,16 @@ python pipeline.py run-all --input data/01_corpus/corpus.csv
 
 | File | Purpose | Already Connected? |
 |------|---------|-------------------|
-| reasoning/axiom_extractor.py | Finds WHY KG is broken | ✅ Used by RepairEnv |
-| qa/repair_candidates.py | Generates fix suggestions | ✅ Used by RepairEnv |
-| qa/apply_fix.py | Executes fixes | ✅ Used by RepairEnv |
-| rl/env_repair.py | RL environment | ✅ Calls reasoning + qa |
-| rl/dqn_agent.py | DQN neural network | ✅ Used by train_repair |
-| rl/diff_tracker.py | Logs changes | ✅ Used by train_repair |
-| rl/human_loop.py | Collects feedback | ✅ Used by train_repair |
-| rl/train_repair.py | Training orchestrator | ✅ Called by pipeline |
-| pipeline.py | CLI entry point | ✅ Imports RepairKGStep |
-| test_repair.py | Quick test script | ✅ Tests all modules |
+| reasoning/axiom_extractor.py | Finds WHY KG is broken |   Used by RepairEnv |
+| qa/repair_candidates.py | Generates fix suggestions |   Used by RepairEnv |
+| qa/apply_fix.py | Executes fixes |   Used by RepairEnv |
+| rl/env_repair.py | RL environment |   Calls reasoning + qa |
+| rl/dqn_agent.py | DQN neural network |   Used by train_repair |
+| rl/diff_tracker.py | Logs changes |   Used by train_repair |
+| rl/human_loop.py | Collects feedback |   Used by train_repair |
+| rl/train_repair.py | Training orchestrator |   Called by pipeline |
+| pipeline.py | CLI entry point |   Imports RepairKGStep |
+| test_repair.py | Quick test script |   Tests all modules |
 
 **ALL FILES ARE ALREADY CONNECTED!** No manual wiring needed.
 
@@ -330,13 +330,13 @@ python pipeline.py repair-kg --episodes 10 --interactive
 
 ## SUCCESS CRITERIA
 
-✅ Test 1 passes-> Imports work
-✅ Test 2 passes-> Evidence extraction works
-✅ Test 3 passes-> Pipeline integration works
-✅ Test 4 passes-> Full loop works
-✅ Test 5 passes-> Training works
-✅ Test 6 passes-> Files created
+  Test 1 passes-> Imports work
+  Test 2 passes-> Evidence extraction works
+  Test 3 passes-> Pipeline integration works
+  Test 4 passes-> Full loop works
+  Test 5 passes-> Training works
+  Test 6 passes-> Files created
 
-**IF ALL PASS-> STEP 2 IS COMPLETE! 🎉**
+**IF ALL PASS-> STEP 2 IS COMPLETE!**
 
 Next: Move to Step 3 (already implemented in train_repair.py)
