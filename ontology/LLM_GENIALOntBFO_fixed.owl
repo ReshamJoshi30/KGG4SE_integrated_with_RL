@@ -1,0 +1,3450 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns3="http://purl.org/dc/terms/" xmlns:ns4="http://purl.org/vocab/vann/" xmlns:ns5="http://www.w3.org/2000/01/rdf-schema#" xmlns:ns6="http://xmlns.com/foaf/0.1/" xmlns:ns7="http://purl.obolibrary.org/obo/" xmlns:ns8="http://www.w3.org/2001/XMLSchema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xml:base="http://cpsagila.cs.uni-kl.de/GENIALOnt">
+  <ns1:Ontology rdf:about="http://w3id.org/gbo/mgg">
+    <ns1:versionIRI rdf:resource="http://w3id.org/gbo/0.2.3" />
+    <ns1:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/2.0/bfo.owl" />
+    <dc:description>Basic Ontology with general vocabulary for serving as a ground to execute basic tasks of the tool AGILA and share common upper level for all classes in GENIAL!. It supports the modelling of microlectronic components like sensors, acutators, processors and software along the automotive value chain.</dc:description>
+    <dc:license>https://creativecommons.org/licenses/by/4.0/</dc:license>
+    <dc:title>GENIAL! Basic Ontology</dc:title>
+    <ns3:contributor>Christoph Grimm</ns3:contributor>
+    <ns3:contributor>Peter Neumann</ns3:contributor>
+    <ns3:created>2021-01-26</ns3:created>
+    <ns3:creator>Frank Wawrzik</ns3:creator>
+    <ns3:title>GENIAL! Basic Ontology</ns3:title>
+    <ns4:preferredNamespacePrefix>gbo-bfo</ns4:preferredNamespacePrefix>
+    <ns4:preferredNamespaceUri>http://w3id.org/gbo</ns4:preferredNamespaceUri>
+    <ns5:label>GENIAL! Basic Ontology</ns5:label>
+    <ns1:versionInfo>0.2.3</ns1:versionInfo>
+    <ns6:homepage>https://cps.cs.uni-kl.de/mitarbeiter/frank-wawrzik-msc</ns6:homepage>
+    <ns6:mbox xml:lang="en">mailto:wawrzik</ns6:mbox>
+  </ns1:Ontology>
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/terms/created" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/terms/title" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri" />
+  <ns1:AnnotationProperty rdf:about="http://w3id.org/gbo/CarModel/atTime">
+    <ns7:IAO_0000112>e.g. law_for_banning_combustion_engines bans combustion engine atTime 2030-10-26T21:32:52 (xsd:DateTime)</ns7:IAO_0000112>
+    <ns5:comment>used to annotate triples</ns5:comment>
+    <ns5:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime" />
+  </ns1:AnnotationProperty>
+  <ns1:AnnotationProperty rdf:about="http://w3id.org/gbo/CarModel/hasAPPELFormula" />
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#comprised_of">
+    <ns1:equivalentProperty rdf:resource="http://w3id.org/gbo#has_part_directly" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#depends_on">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
+    <ns5:domain rdf:resource="http://w3id.org/gbo#property" />
+    <ns5:range rdf:resource="http://w3id.org/gbo#dependency" />
+    <ns7:IAO_0000115>Links properties with dependencies.</ns7:IAO_0000115>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#executes">
+    <ns1:inverseOf rdf:resource="http://w3id.org/gbo#is_executed_by" />
+    <ns5:domain rdf:resource="http://w3id.org/gbo/CarModel/processing_element" />
+    <ns5:range rdf:resource="http://w3id.org/gbo#software_element" />
+    <ns5:comment>Relates a processing unit to the software which runs on it</ns5:comment>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#has_part">
+    <ns1:inverseOf rdf:resource="http://w3id.org/gbo#part_of" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+    <ns7:IAO_0000115>models hierarchical de-composition/integration</ns7:IAO_0000115>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#has_part_directly">
+    <ns5:subPropertyOf rdf:resource="http://w3id.org/gbo#has_part" />
+    <ns1:inverseOf rdf:resource="http://w3id.org/gbo#part_of_directly" />
+    <ns5:comment>models hierarchical de-composition/integration of direct parts</ns5:comment>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#has_property">
+    <ns1:inverseOf rdf:resource="http://w3id.org/gbo#property_of" />
+    <ns5:domain rdf:resource="http://w3id.org/gbo#element" />
+    <ns5:range rdf:resource="http://w3id.org/gbo#property" />
+    <ns7:IAO_0000115>links elements to their properties</ns7:IAO_0000115>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#implements">
+    <ns1:inverseOf rdf:resource="http://w3id.org/gbo#is_implemented_by" />
+    <ns5:domain rdf:resource="http://w3id.org/gbo#element" />
+    <ns5:comment>Links elements their functions</ns5:comment>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#is_executed_by">
+    <ns5:domain rdf:resource="http://w3id.org/gbo#software_element" />
+    <ns5:range rdf:resource="http://w3id.org/gbo/CarModel/processing_element" />
+    <ns5:comment>Relates the software to the processing unit on which it runs</ns5:comment>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#is_implemented_by">
+    <ns5:domain rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:range rdf:resource="http://w3id.org/gbo#element" />
+    <ns5:comment>Links functions to their elements</ns5:comment>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#part_of">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+    <ns7:IAO_0000115>models hierarchical de-composition/integration</ns7:IAO_0000115>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#part_of_directly">
+    <ns5:subPropertyOf rdf:resource="http://w3id.org/gbo#part_of" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://w3id.org/gbo#property_of">
+    <ns7:IAO_0000115>links properties back to their components</ns7:IAO_0000115>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit">
+    <ns5:domain rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns5:range rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit" />
+    <ns7:IAO_0000115>Links measure with their unit</ns7:IAO_0000115>
+    <ns5:label>has unit</ns5:label>
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasValue">
+    <ns5:domain rdf:resource="http://w3id.org/gbo#property" />
+    <ns5:range rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns7:IAO_0000115>Links properties or quantities to their measure (concrete value)</ns7:IAO_0000115>
+    <ns5:label>has value</ns5:label>
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://w3id.org/gbo/hasLowerBoundNumericalValue" />
+  <ns1:DatatypeProperty rdf:about="http://w3id.org/gbo/hasUpperBoundNumericalValue" />
+  <ns1:DatatypeProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue">
+    <ns5:domain rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+  </ns1:DatatypeProperty>
+  <ns1:Class rdf:about="http://w3id.org/gbo#component">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#non_system_level_element" />
+          <ns1:Class>
+            <ns1:unionOf rdf:parseType="Collection">
+              <ns1:Class>
+                <ns1:intersectionOf rdf:parseType="Collection">
+                  <ns1:Restriction>
+                    <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+                    <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo#hardware_part" />
+                  </ns1:Restriction>
+                  <ns1:Restriction>
+                    <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+                    <ns1:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</ns1:minQualifiedCardinality>
+                    <ns1:onClass rdf:resource="http://w3id.org/gbo#hardware_part" />
+                  </ns1:Restriction>
+                </ns1:intersectionOf>
+              </ns1:Class>
+              <ns1:Class>
+                <ns1:unionOf rdf:parseType="Collection">
+                  <ns1:Restriction>
+                    <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+                    <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo#software_component" />
+                  </ns1:Restriction>
+                  <ns1:Restriction>
+                    <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+                    <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo#software_unit" />
+                  </ns1:Restriction>
+                </ns1:unionOf>
+              </ns1:Class>
+            </ns1:unionOf>
+          </ns1:Class>
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly" />
+            <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo#system" />
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns7:IAO_0000112>A microcontroller</ns7:IAO_0000112>
+    <ns7:IAO_0000115>According to ISO26262: non-system level element (3.41) that is logically or technically separable and is comprised of more than one hardware part (3.71) or one or more software units (3.159). 
+
+A component is a part of a system (3.163).</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#context">
+    <ns7:IAO_0000115>The circumstances that form the setting for an event, statement or idea and in terms of which it can be fully understood, e.g. Market, legal  frame conditions</ns7:IAO_0000115>
+    <ns5:label>context</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#dependency">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#property" />
+    <ns7:IAO_0000115>A gbo:property that is a boolean or arithmetic function / equation on properties. Used to be calculated with GENIAL constraint propagation. As string in LaTex syntax.</ns7:IAO_0000115>
+    <ns5:label>dependency</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#element">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002" />
+    <ns1:disjointWith>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000020" />
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000141" />
+          <rdf:Description rdf:about="http://w3id.org/gbo#context" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns1:disjointWith>
+    <ns7:IAO_0000115>Continuant that is (according to ISO 26262) a system (3.163), components (3.21) (hardware or software), hardware parts (3.71), or software units (3.159)</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#engineered_object">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030" />
+    <ns7:IAO_0000115>An object created, designed or engineered by humans.</ns7:IAO_0000115>
+    <ns5:label>engineered object</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#function">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000034" />
+    <ns7:IAO_0000115>A bfo:function that an element (e.g. system, component, hardware or software) implements.</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#hardware_component">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element" />
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+            <ns1:allValuesFrom rdf:resource="http://w3id.org/gbo#hardware_part" />
+          </ns1:Restriction>
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+            <ns1:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</ns1:minQualifiedCardinality>
+            <ns1:onClass rdf:resource="http://w3id.org/gbo#hardware_part" />
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns1:disjointWith rdf:resource="http://w3id.org/gbo#software_component" />
+    <ns7:IAO_0000112>actuator</ns7:IAO_0000112>
+    <ns7:IAO_0000112>multi core</ns7:IAO_0000112>
+    <ns7:IAO_0000112>sensor</ns7:IAO_0000112>
+    <ns7:IAO_0000115>No ISO definition. Formal Definition derived from other definitions.</ns7:IAO_0000115>
+    <ns5:label>hardware component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#hardware_element">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_component" />
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_elementary_subpart" />
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_part" />
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#engineered_object" />
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#non_system_level_element" />
+    <ns1:disjointWith rdf:resource="http://w3id.org/gbo#software_element" />
+    <ns5:comment>From definition of element:
+Note 1 to entry: When “software element” or “hardware element” is used, this phrase denotes an element of software only or an element of hardware only, respectively.</ns5:comment>
+    <ns5:label>hardware</ns5:label>
+    <ns5:label>hardware element</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#hardware_elementary_subpart">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element" />
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly" />
+            <ns1:allValuesFrom rdf:resource="http://w3id.org/gbo#hardware_subpart" />
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns1:disjointWith rdf:resource="http://w3id.org/gbo/actuating" />
+    <ns7:IAO_0000112>A flip-flop of the ALU with its logic cone, a register.</ns7:IAO_0000112>
+    <ns7:IAO_0000115>smallest portion of a hardware subpart (3.73) considered in safety (3.132) analysis</ns7:IAO_0000115>
+    <ns5:label>hardware elementary subpart</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#hardware_part">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element" />
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly" />
+            <ns1:allValuesFrom rdf:resource="http://w3id.org/gbo#component" />
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns7:IAO_0000112>The CPU of a microcontroller, a resistor, flash array of a microcontroller.</ns7:IAO_0000112>
+    <ns7:IAO_0000115>A piece of hardware that is (according to ISO 26262) a portion of a hardware component (3.21) at the first level of hierarchical decomposition.</ns7:IAO_0000115>
+    <ns5:label>hardware part</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#hardware_subpart">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element" />
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#has_part_directly" />
+            <ns1:allValuesFrom>
+              <ns1:Class>
+                <ns1:unionOf rdf:parseType="Collection">
+                  <rdf:Description rdf:about="http://w3id.org/gbo#hardware_elementary_subpart" />
+                  <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart" />
+                </ns1:unionOf>
+              </ns1:Class>
+            </ns1:allValuesFrom>
+          </ns1:Restriction>
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly" />
+            <ns1:allValuesFrom>
+              <ns1:Class>
+                <ns1:unionOf rdf:parseType="Collection">
+                  <rdf:Description rdf:about="http://w3id.org/gbo#hardware_part" />
+                  <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart" />
+                </ns1:unionOf>
+              </ns1:Class>
+            </ns1:allValuesFrom>
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns7:IAO_0000112>ALU of a CPU of a microcontroller</ns7:IAO_0000112>
+    <ns7:IAO_0000112>register bank of a CPU</ns7:IAO_0000112>
+    <ns7:IAO_0000115>Portion of a hardware part (3.71) that can be logically divided and represents second or greater level of hierarchical decomposition.</ns7:IAO_0000115>
+    <ns5:label>hardware subpart</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#legal_boundary_condition">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#context" />
+    <ns5:label>legal boundary conditon</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#market">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#context" />
+    <ns5:label>market</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#material_object">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030" />
+    <ns5:label>material object</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#non_system_level_element">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#element" />
+    <ns1:disjointWith rdf:resource="http://w3id.org/gbo#system_level_element" />
+    <ns7:IAO_0000115>An element that is not on the system-level</ns7:IAO_0000115>
+    <ns5:label>non system level element</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#property">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019" />
+    <ns7:IAO_0000112>drag coefficient</ns7:IAO_0000112>
+    <ns7:IAO_0000112>power</ns7:IAO_0000112>
+    <ns7:IAO_0000112>temperature</ns7:IAO_0000112>
+    <ns7:IAO_0000115>A quality or characteristic of an element, hardware, software or function. A property has a boolean, integer, or real variable through the measure class. Specifically properties can be unquantified and quantified. But quantified properties are quantities.</ns7:IAO_0000115>
+    <ns5:label>property</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#social_object">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040" />
+    <ns5:subClassOf>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000027" />
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000030" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns5:subClassOf>
+    <ns7:IAO_0000112>organisation</ns7:IAO_0000112>
+    <ns7:IAO_0000112>person</ns7:IAO_0000112>
+    <ns7:IAO_0000115>An object or object aggregate that stands in a social role.</ns7:IAO_0000115>
+    <ns5:label>social object</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#software_component">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#software_element" />
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+            <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo#software_unit" />
+          </ns1:Restriction>
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+            <ns1:allValuesFrom rdf:resource="http://w3id.org/gbo#software_unit" />
+          </ns1:Restriction>
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+            <ns1:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</ns1:minQualifiedCardinality>
+            <ns1:onClass rdf:resource="http://w3id.org/gbo#software_unit" />
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns7:IAO_0000115>one or more softwareunits (3.159)</ns7:IAO_0000115>
+    <ns5:label>software component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#software_element">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031" />
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#non_system_level_element" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#is_executed_by" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/CarModel/processing_element" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:comment>From definition of element:
+Note 1 to entry: When “software element” or “hardware element” is used, this phrase denotes an element of software only or an element of hardware only, respectively.</ns5:comment>
+    <ns5:label>software</ns5:label>
+    <ns5:label>software element</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#software_unit">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#software_element" />
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+            <ns1:allValuesFrom rdf:resource="http://w3id.org/gbo#software_element" />
+          </ns1:Restriction>
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+            <ns1:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</ns1:qualifiedCardinality>
+            <ns1:onClass rdf:resource="http://w3id.org/gbo#software_element" />
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns7:IAO_0000115>a piece of software that is (according to ISO26262) an atomic level software component (3.157) of the software architecture (3.1) that can be subjected to stand-alone testing (3.169)</ns7:IAO_0000115>
+    <ns5:label>software unit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#system">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://w3id.org/gbo#system_level_element" />
+          <ns1:Class>
+            <ns1:intersectionOf rdf:parseType="Collection">
+              <ns1:Restriction>
+                <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+                <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/actuator" />
+              </ns1:Restriction>
+              <ns1:Restriction>
+                <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+                <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/controller" />
+              </ns1:Restriction>
+              <ns1:Restriction>
+                <ns1:onProperty rdf:resource="http://w3id.org/gbo#comprised_of" />
+                <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/sensor" />
+              </ns1:Restriction>
+            </ns1:intersectionOf>
+          </ns1:Class>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns7:IAO_0000115>System level element that is according to ISO 26262: set of components (3.21) or subsystems that relates at least a sensor, a controller and an actuator with one another.
+
+Note 1 to entry: The related sensor or actuator can be included in the system, or can be external to the system.</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo#system_level_element">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#element" />
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#engineered_object" />
+    <ns7:IAO_0000115>An element that is on the system level</ns7:IAO_0000115>
+    <ns5:label>system level element</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/actuating">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns7:IAO_0000115>A gbo:function to change or control an object</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/actuator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Actuator" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#implements" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/actuating" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns7:IAO_0000115>An actuator is a hardware component that implements some actuating function and is responsible for moving or controlling a mechanism or system.</ns7:IAO_0000115>
+    <ns5:comment>Not defined in ISO26262</ns5:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/automatic_cruise_control">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo/vehicle_function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/camera" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/electronic_control_unit" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/lidar" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/radar" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by" />
+        <ns1:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</ns1:minQualifiedCardinality>
+        <ns1:onClass rdf:resource="http://w3id.org/gbo/electronic_control_unit" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by" />
+        <ns1:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</ns1:minQualifiedCardinality>
+        <ns1:onClass rdf:resource="http://w3id.org/gbo/sensor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns7:IAO_0000115>An “automatic cruise control” is a vehicle function that can be implemented, using different ECUs and a variety of sensor technology (e.g. Radar, Lidar, Camera).</ns7:IAO_0000115>
+    <ns5:label>automatic cruise control</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/camera">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo/sensor" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/controller">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/CarModel/processing_element" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/electronic_control_unit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label>ECU</ns5:label>
+    <ns5:label>electronic control unit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/embedded_software">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software_element" />
+    <ns7:IAO_0000115>a software that is (according to ISO 26262) fully-integrated software to be executed on a processing element (3.113)</ns7:IAO_0000115>
+    <ns5:label>embedded software</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/functional_requirement">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo/requirement" />
+    <ns7:IAO_0000115>A requirement that specifies something the system should do.</ns7:IAO_0000115>
+    <ns7:IAO_0000119>https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/</ns7:IAO_0000119>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/item">
+    <ns1:equivalentClass>
+      <ns1:Class>
+        <ns1:intersectionOf rdf:parseType="Collection">
+          <ns1:Class>
+            <ns1:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://w3id.org/gbo#system" />
+              <ns1:Restriction>
+                <ns1:onProperty rdf:resource="http://w3id.org/gbo#has_part" />
+                <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo#system" />
+              </ns1:Restriction>
+              <ns1:Restriction>
+                <ns1:onProperty rdf:resource="http://w3id.org/gbo#part_of" />
+                <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo#system" />
+              </ns1:Restriction>
+            </ns1:unionOf>
+          </ns1:Class>
+          <ns1:Restriction>
+            <ns1:onProperty rdf:resource="http://w3id.org/gbo#implements" />
+            <ns1:allValuesFrom rdf:resource="http://w3id.org/gbo/vehicle_function" />
+          </ns1:Restriction>
+        </ns1:intersectionOf>
+      </ns1:Class>
+    </ns1:equivalentClass>
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system_level_element" />
+    <ns7:IAO_0000115>System level element that is (according to ISO26262) system (3.163) or combination of systems (3.163), to which ISO 26262 is applied, that implements a function or part of a function at the vehicle level.
+
+Note 1 to entry: See vehicle function (3.178).</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/lidar">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo/sensor" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/non_functional_requirement">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo/requirement" />
+    <ns7:IAO_0000115>A requirement that describes how the system works.</ns7:IAO_0000115>
+    <ns7:IAO_0000119>https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/</ns7:IAO_0000119>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/operating_time">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#property_of" />
+        <ns1:someValuesFrom>
+          <ns1:Class>
+            <ns1:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://w3id.org/gbo#element" />
+              <rdf:Description rdf:about="http://w3id.org/gbo/item" />
+            </ns1:unionOf>
+          </ns1:Class>
+        </ns1:someValuesFrom>
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns7:IAO_0000115>A quantity that is (according to ISO 26262) a cumulative time that an item (3.84) or element (3.41) is functioning, including degraded modes.</ns7:IAO_0000115>
+    <ns5:label>operating time</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/performance">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#property" />
+    <ns7:IAO_0000115>a gbo:property on how well a person, machine, etc. does a piece of work or an activity</ns7:IAO_0000115>
+    <ns7:IAO_0000119>https://dictionary.cambridge.org/dictionary/english/performance</ns7:IAO_0000119>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/processing">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns7:IAO_0000115>A gbo:function to calculate a set of instructions or software</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/radar">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo/sensor" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/requirement">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#property" />
+    <ns7:IAO_0000115>A property that is wanted or needed.</ns7:IAO_0000115>
+    <ns7:IAO_0000119>https://www.merriam-webster.com/dictionary/requirement</ns7:IAO_0000119>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/sensing">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns7:IAO_0000115>A gbo:function to perceive an object</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/sensor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#implements" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/sensing" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns7:IAO_0000112>accelerometer</ns7:IAO_0000112>
+    <ns7:IAO_0000112>humidity sensor</ns7:IAO_0000112>
+    <ns7:IAO_0000112>radar</ns7:IAO_0000112>
+    <ns7:IAO_0000115>Hardware component that implements some sensing function.</ns7:IAO_0000115>
+    <ns5:comment>Not defined in ISO26262</ns5:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/vehicle_function">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns7:IAO_0000112>An “automatic cruise control” is a vehicle function that can be implemented, using different ECUs and a variety of sensor technology (e.g. Radar, Lidar, Camera).</ns7:IAO_0000112>
+    <ns7:IAO_0000115>A gbo:function that is (according to ISO26262) behaviour of the vehicle, intended by the implementation of one or more items (3.84), that is observable by the customer.</ns7:IAO_0000115>
+    <ns5:label>vehicle function</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/CarModel/mechanical_object">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#engineered_object" />
+    <ns7:IAO_0000112>vehicle</ns7:IAO_0000112>
+    <ns7:IAO_0000115>An engineered object that has mechanical characteristics. They can be either dominant mechanical characteristics like in a vehicle or wheel or less dominant like in a battery.</ns7:IAO_0000115>
+    <ns5:label>mechanical object</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://w3id.org/gbo/CarModel/processing_element">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://w3id.org/gbo#implements" />
+        <ns1:someValuesFrom rdf:resource="http://w3id.org/gbo/processing" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns7:IAO_0000115>(according to ISO26262) hardware part (3.71) providing a set of functions for data processing, normally consisting of a register set, an execution unit, and a control unit</ns7:IAO_0000115>
+    <ns5:label>processing element</ns5:label>
+    <ns5:label>processing unit</ns5:label>
+    <ns5:label>processor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/measure">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue" />
+        <ns1:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns7:IAO_0000115>A bfo:quality that are amounts of quantities.</ns7:IAO_0000115>
+    <ns5:label>measure</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#property" />
+    <ns7:IAO_0000115>A quantity is a (property that is quanitifiable and a) representation of a quantifiable (standardised) aspect (such as length, mass, and time) of a phenomenon (e.g., a star, a molecule, or a food product). Quantities are classified according to similarity in their (implicit) metrological aspect, e.g. the length of my table and the length of my chair are both classified as length.</ns7:IAO_0000115>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/unit">
+    <ns5:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019" />
+    <ns7:IAO_0000115>A quality that is any standard used for comparison in measurements.</ns7:IAO_0000115>
+    <ns5:label>unit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.w3.org/ns/sosa/Actuator" />
+  <ns1:Class rdf:about="http://www.w3.org/ns/sosa/Sensor" />
+  <rdf:Description>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses" />
+    <ns1:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://w3id.org/gbo#hardware_component" />
+      <rdf:Description rdf:about="http://w3id.org/gbo#hardware_elementary_subpart" />
+      <rdf:Description rdf:about="http://w3id.org/gbo#hardware_part" />
+      <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart" />
+    </ns1:members>
+  </rdf:Description>
+  <ns1:Class rdf:about="#_fuel_costs">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_costs</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_electrical_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_fuel_costs" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_electrical_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_overview">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">overview</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_electrical_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_overview" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_electrical_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_major_power-related_elements">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">major_power-related_elements</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_electrical_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_major_power-related_elements" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_electrical_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_extra_battery_bank">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">extra_battery_bank</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_project">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_extra_battery_bank" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">project</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_extra_battery_bank">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_pv_array" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">extra_battery_bank</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_mppt" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_generated_for_solar">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_generated_for_solar</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_extra_battery_bank">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_power_generated_for_solar" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">extra_battery_bank</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_reducing_fuel_consumption">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">reducing_fuel_consumption</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_generated_for_solar">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_reducing_fuel_consumption" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_generated_for_solar</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery_protection">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery_protection</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery_management_scheme">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_battery_protection" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery_management_scheme</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_various_devices">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">various_devices</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_electrical_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_various_devices" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_electrical_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_parameters">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">parameters</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_component">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_parameters" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_alternator_model">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">alternator_model</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_alternator_model" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_starter_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_lead-acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">lead-acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_lead-acid_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_pv_array" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_mppt" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dc-dc_converters">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dc-dc_converters</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_dc-dc_converters" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_rotor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">rotor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_the_two_components">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_rotor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">the_two_components</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_the_two_components">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_stator" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">the_two_components</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_alternator_pulley">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">alternator_pulley</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_rotor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_alternator_pulley" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">rotor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stator_windings">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_stator" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stator_windings</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_iron_core">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_stator" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">iron_core</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_iron_shaft">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">iron_shaft</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_coil_windings">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_iron_shaft" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">coil_windings</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_placement_of_coil_windings">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">placement_of_coil_windings</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_120-degree_intervals">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_placement_of_coil_windings" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">120-degree_intervals</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_alternating_magnetic_field">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">alternating_magnetic_field</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_rotor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_alternating_magnetic_field" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">rotor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_alternating_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_stator" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">alternating_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_set_of_diodes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">set_of_diodes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ac_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_set_of_diodes" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">ac_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stator_leads">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stator_leads</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_set_of_diodes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_stator_leads" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">set_of_diodes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stator_lead">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stator_lead</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_diodes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_stator_lead" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">diodes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_manage">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">manage</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_manage" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_stop_and_direct_the_flow_of_current">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">stop_and_direct_the_flow_of_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_diodes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_stop_and_direct_the_flow_of_current" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">diodes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dc_electricity">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dc_electricity</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_batteries">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_dc_electricity" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">batteries</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_one-way_valve">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">one-way_valve</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_diodes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_one-way_valve" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">diodes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dc_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dc_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_dc_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_electrical_device">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_device</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_electrical_device" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_internal_combustion_engines">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">internal_combustion_engines</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_electrical_device">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#executes" />
+        <ns1:someValuesFrom rdf:resource="#_internal_combustion_engines" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_device</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_12v_lead_acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">12v_lead_acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_12v_lead_acid_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_12v_lead_acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_current" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">12v_lead_acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_starter_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_combustion_process">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">combustion_process</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_combustion_process" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_component">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor_gear">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_component" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor_gear</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_teeth_of_the_flywheel">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">teeth_of_the_flywheel</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_component">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_teeth_of_the_flywheel" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_location">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">location</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_component">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_location" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine's_gearbox_housing">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine's_gearbox_housing</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_location">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_engine's_gearbox_housing" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">location</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_rating">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_rating</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_power_rating" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_5kw">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">5kw</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_rating">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_5kw" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_rating</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_kw">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">kw</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_5kw">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_unit" />
+        <ns1:someValuesFrom rdf:resource="#_kw" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">5kw</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_series_resistor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">series_resistor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_series_resistor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_constant_voltage_source">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">constant_voltage_source</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_constant_voltage_source" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_infinite">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">infinite</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery_charge_capacity">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_infinite" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery_charge_capacity</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_block">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">block</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charge_capacity">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charge_capacity</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_charge_capacity" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_finite">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">finite</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charge_capacity">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_finite" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charge_capacity</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_no_dynamics">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">no_dynamics</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_no_dynamics" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_no_self-discharge">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">no_self-discharge</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_no_self-discharge" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_no_aging">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">no_aging</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_no_aging" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_voltage">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">voltage</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mathematical_equations">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_voltage" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mathematical_equations</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mathematical_equations">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_current" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mathematical_equations</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_array_modelling">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array_modelling</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_matlab/simulink">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_pv_array_modelling" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">matlab/simulink</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_factors_of_series_and_parallel_no_of_cells">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">factors_of_series_and_parallel_no_of_cells</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_cell_modelling_equations">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_factors_of_series_and_parallel_no_of_cells" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_cell_modelling_equations</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_cells">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_cells</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_solar_cells" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_cell">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_cell</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_single-diode_electrical_equivalent_circuit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_pv_cell" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">single-diode_electrical_equivalent_circuit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_cell">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_pv_array" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_cell</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_diode">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">diode</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current_source">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_diode" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current_source</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_resistance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">resistance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_shunt_resistance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_resistance" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">shunt_resistance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_parallel">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">parallel</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current_source">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_parallel" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current_source</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_series">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">series</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_resistance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_series" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">resistance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_electronic_circuit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_electronic_circuit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_power_electronic_circuit" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_electronic_circuit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_buck_converter" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_electronic_circuit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_output_load">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">output_load</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_input_dc_voltage">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_output_load" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">input_dc_voltage</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_average_output_voltage">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_buck_converter" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">average_output_voltage</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_smaller">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">smaller</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_source_voltage">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_smaller" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">source_voltage</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fig6">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fig6</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter_circuit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_fig6" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter_circuit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_working_principle">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">working_principle</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_circuit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_working_principle" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">circuit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_condition_of_the_switch">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">condition_of_the_switch</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_working_principle">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_condition_of_the_switch" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">working_principle</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_two_states">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">two_states</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_switch">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_two_states" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">switch</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_closed_(on)">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">closed_(on)</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_two_states">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_closed_(on)" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">two_states</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_open_(off)">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">open_(off)</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_two_states">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_open_(off)" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">two_states</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_electronic_component">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_electronic_component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_switch">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_power_electronic_component" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">switch</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mosfets">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mosfets</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_electronic_component">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_mosfets" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_electronic_component</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_continuous">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">continuous</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_operating_mode_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_continuous" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">operating_mode_buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_discontinuous">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">discontinuous</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_operating_mode_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_discontinuous" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">operating_mode_buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_operating_modes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">operating_modes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_circuit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_operating_modes" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">circuit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_operating_modes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_current" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">operating_modes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_inductor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">inductor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_inductor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_zero">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">zero</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_inductor_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_zero" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">inductor_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_continuous_mode">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">continuous_mode</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_inductor_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_continuous_mode" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">inductor_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_discontinuous_mode">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">discontinuous_mode</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_inductor_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_discontinuous_mode" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">inductor_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_parameters">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">parameters</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine_averaged_model">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_parameters" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine_averaged_model</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_car_tire_diameter">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">car_tire_diameter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_parameters">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_car_tire_diameter" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">parameters</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_speed">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">speed</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_parameters">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_speed" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">parameters</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine_subsystem">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine_subsystem</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_clutch">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">clutch</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starting_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_clutch" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starting_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_solenoid">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_solenoid</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starting_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_starter_solenoid" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starting_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pinion">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pinion</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starting_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_pinion" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starting_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starting_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_starter_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starting_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_plunger">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">plunger</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_clutch">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_plunger" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">clutch</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor_shaft">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor_shaft</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pinion_gear_flywheel">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_starter_motor_shaft" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pinion_gear_flywheel</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine_crank_shaft">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine_crank_shaft</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor_shaft">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_engine_crank_shaft" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor_shaft</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_supply_from_the_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">supply_from_the_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solenoid_coils">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_supply_from_the_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solenoid_coils</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_switch_to_the_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">switch_to_the_starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solenoid_coils">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_switch_to_the_starter_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solenoid_coils</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solenoid_coils">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_current" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solenoid_coils</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_rotation">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">rotation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_rotation" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pinion">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_engine" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pinion</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_cranking">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">cranking</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_cranking" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starting_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_starter_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starting_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_crank_the_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">crank_the_engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_crank_the_engine" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_huge_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">huge_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starting_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_huge_current" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starting_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_huge_amount_for_current">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">huge_amount_for_current</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_12v_lead_acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_huge_amount_for_current" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">12v_lead_acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_12v_lead_acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">12v_lead_acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery_soc">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_12v_lead_acid_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery_soc</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_electrical_requirements">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_requirements</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_electrical_requirements" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charge">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charge</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_charge" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_car">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">car</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_car" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_car">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">car</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_lighting_systems">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_car" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">lighting_systems</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_car">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">car</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mobile_chargers">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_car" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mobile_chargers</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_car">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">car</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_electrical_and_electronic_accessories">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_car" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_and_electronic_accessories</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charging">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charging</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charging_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_charging" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charging_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charging_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charging_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_electrical_components">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_components</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charging_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_electrical_components" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charging_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_alternator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_alternator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_charging_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_automotive_alternator" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">charging_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_alternator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_engine" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_alternator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_full_bridge_rectifier">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">full_bridge_rectifier</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_alternator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_full_bridge_rectifier" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_alternator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_convert_supply_from_alternator_from_ac_to_dc">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">convert_supply_from_alternator_from_ac_to_dc</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_full_bridge_rectifier">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_convert_supply_from_alternator_from_ac_to_dc" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">full_bridge_rectifier</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dc_supply">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dc_supply</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_self_excitation">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">self_excitation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dc_supply">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_self_excitation" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dc_supply</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_field_winding">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">field_winding</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_self_excitation">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_field_winding" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">self_excitation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_output">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">output</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_alternator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_output" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">alternator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_circuit">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">circuit</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_field_voltage_regulator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_circuit" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">field_voltage_regulator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_limits">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">limits</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_field_voltage">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_limits" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">field_voltage</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_limits">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">limits</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_output">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_limits" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">output</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_flexible_thin-film_solar_pv_module">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">flexible_thin-film_solar_pv_module</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_proposed_model">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_flexible_thin-film_solar_pv_module" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">proposed_model</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power_point_tracking_charge_controller">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power_point_tracking_charge_controller</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_flexible_thin-film_solar_pv_module">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_maximum_power_point_tracking_charge_controller" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">flexible_thin-film_solar_pv_module</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_energy">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">energy</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power_point_tracking_charge_controller">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_energy" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power_point_tracking_charge_controller</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_recharge">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">recharge</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_energy">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_recharge" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">energy</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_car_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">car_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_recharge">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_car_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">recharge</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_versus_voltage_characteristics">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_versus_voltage_characteristics</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_power_versus_voltage_characteristics" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_voltage">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">voltage</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_panel">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_voltage" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_panel</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_panel">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_panel</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt_dc-dc_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_solar_panel" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt_dc-dc_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt_dc-dc_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_battery" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt_dc-dc_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_car's_electrical_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">car's_electrical_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_alternator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_car's_electrical_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">alternator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery_charging">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery_charging</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_alternator">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_battery_charging" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">alternator</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_consumption_display_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumption_display_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_simulink_model">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_fuel_consumption_display_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">simulink_model</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_starter_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_starter_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solenoid">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solenoid</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_solenoid" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ignition_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">ignition_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_ignition_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_lighting_systems">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">lighting_systems</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_lighting_systems" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_pump_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_pump_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_fuel_pump_motor" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_equivalent_resistance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">equivalent_resistance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_pump_motor">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_equivalent_resistance" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_pump_motor</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_pv_array" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_constant_irradiance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">constant_irradiance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_constant_irradiance" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_variable_irradiance_values">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">variable_irradiance_values</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_variable_irradiance_values" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_indication">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_indication</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_fuel_indication" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_bms">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">bms</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#other" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_bms" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_extracting_maximum_power">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">extracting_maximum_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_extracting_maximum_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_pv_module">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_pv_module</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_solar_pv_module" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_pv_module">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_maximum_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_pv_module</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_load">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">load</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_load" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_transfer">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_transfer</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_power_transfer" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_pv_module">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_buck_converter" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_pv_module</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_maximum_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_interface">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">interface</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_interface" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_module">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">module</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_interface">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_module" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">interface</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_load_impedance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">load_impedance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_duty_cycle">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_load_impedance" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">duty_cycle</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_source">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">source</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_load_impedance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_source" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">load_impedance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_peak_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_maximum_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">peak_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt_technique">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_maximum_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt_technique</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_pv_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">pv_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximum_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_pv_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dcdc_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dcdc_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_mppt">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_dcdc_converter" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">mppt</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_photovoltaic_systems">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic_systems</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dcdc_converter">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_photovoltaic_systems" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dcdc_converter</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_photovoltaic_array_output_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic_array_output_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_photovoltaic_systems">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_photovoltaic_array_output_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic_systems</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_maximize">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">maximize</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_photovoltaic_array_output_power">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_maximize" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic_array_output_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_buck_converter_configuration">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter_configuration</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_photovoltaic_systems">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_buck_converter_configuration" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic_systems</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_electrical_and_electronic_accessories">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_and_electronic_accessories</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_electrical_and_electronic_accessories" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_prices">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_prices</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_fuel_prices" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_environmental_concerns">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">environmental_concerns</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_automotive_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_environmental_concerns" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_energy_supply">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">energy_supply</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_lead_acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_energy_supply" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">lead_acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_performance">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">performance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_lead_acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_performance" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">lead_acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_dependability">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">dependability</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_lead_acid_battery">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_dependability" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">lead_acid_battery</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_battery-rooftop_pv_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">battery-rooftop_pv_array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_part_directly" />
+        <ns1:someValuesFrom rdf:resource="#_battery-rooftop_pv_array" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_supply_power">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">supply_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#implements" />
+        <ns1:someValuesFrom rdf:resource="#_supply_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#software" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_aes" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_consumed">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumed</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#component" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_fuel_consumed" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_operation">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_operation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_rooftop_pv_array">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_hybrid_operation" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">rooftop_pv_array</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_supply_to_the_automotive_loads">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">supply_to_the_automotive_loads</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_operation">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_supply_to_the_automotive_loads" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_operation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_storing_of_pv_power">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">storing_of_pv_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_topologies">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_storing_of_pv_power" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">topologies</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_1000w/m2">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">1000w/m2</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_irradiance">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_1000w/m2" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">irradiance</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_cost">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">cost</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_cost" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_35_rs/hr">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">35_rs/hr</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_cost">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_35_rs/hr" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">cost</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_rs/hr">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">rs/hr</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_cost">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_unit" />
+        <ns1:someValuesFrom rdf:resource="#_rs/hr" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">cost</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_vehicle">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">vehicle</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_operation">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_vehicle" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">operation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_unit_cost">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">unit_cost</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_power_generation">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#function" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_unit_cost" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">power_generation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_consumption">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumption</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system_for_aes_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_fuel_consumption" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system_for_aes_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_27_rs/hr">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">27_rs/hr</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_consumption">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_27_rs/hr" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumption</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_270_rs/hr_for_10_hours_of_operation">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">270_rs/hr_for_10_hours_of_operation</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_fuel_consumption">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_value" />
+        <ns1:someValuesFrom rdf:resource="#_270_rs/hr_for_10_hours_of_operation" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumption</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_convention_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">convention_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system_for_aes_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_convention_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system_for_aes_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_hybrid_energy_system_for_aes_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system_for_aes_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_solar_power">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_hybrid_energy_system_for_aes_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">solar_power</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_engine_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#part_of_directly" />
+        <ns1:someValuesFrom rdf:resource="#_aes_system" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">engine_system</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_overall_efficiency">
+    <ns5:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure" />
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">overall_efficiency</ns5:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_aes_system">
+    <ns5:subClassOf rdf:resource="http://w3id.org/gbo#system" />
+    <ns5:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#has_property" />
+        <ns1:someValuesFrom rdf:resource="#_overall_efficiency" />
+      </ns1:Restriction>
+    </ns5:subClassOf>
+    <ns5:label ns8:datatype="http://www.w3.org/2001/XMLSchema#string">aes_system</ns5:label>
+  </ns1:Class>
+</rdf:RDF>

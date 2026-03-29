@@ -1,0 +1,3 @@
+The vehicle battery management system monitors voltage and temperature.
+An automotive alternator converts mechanical energy to electrical energy.
+A controller regulates inverter switching for electric drivetrain efficiency.

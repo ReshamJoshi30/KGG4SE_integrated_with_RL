@@ -1,0 +1,4 @@
+doc_id,doc_type,doc_sub_type,title,doc_date,url,score_relevance
+1,NEWS,general,"The vehicle battery management system monitors voltage and temperature.",2023-01-01,http://example.com/a,0.92
+2,SCIENCE,article,"An automotive alternator converts mechanical energy to electrical energy.",2022-06-10,http://example.com/b,0.85
+3,PATENT,application,"A controller regulates inverter switching for electric drivetrain efficiency.",2021-11-05,http://example.com/c,0.81

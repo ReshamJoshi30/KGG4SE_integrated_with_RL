@@ -1,0 +1,6 @@
+subject_text,predicate_text,object_text,subject_uri,predicate_uri,object_uri,s_score,p_score,o_score,status
+temperature_sensor,measures,temperature,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/Sensor_da7a5148,http://w3id.org/gbo#has_property,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/property_bea1026b,90.0,100.0,100.0,ok
+ecu,controls,actuator,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/electronic_control_unit_1a23707a,http://w3id.org/gbo#executes,http://w3id.org/gbo/actuator,100.0,100.0,100.0,ok
+can_bus,transmits,data,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/can_bus,http://w3id.org/gbo#executes,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/property_798bd83c,0.0,100.0,100.0,ok:subject_minted
+wiring,connects,ecu,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/hardware_component_3a3f46a3,http://w3id.org/gbo#has_part_directly,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/electronic_control_unit_1a23707a,100.0,100.0,100.0,ok
+battery,powers,system,http://cpsagila.cs.uni-kl.de/GENIALOnt/ind/hardware_element_8662ce4c,http://w3id.org/gbo#executes,http://w3id.org/gbo#system,100.0,100.0,100.0,ok

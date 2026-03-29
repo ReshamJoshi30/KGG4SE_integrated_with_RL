@@ -1,0 +1,62 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+__pycache__/
+
+# Exclude generated/intermediate outputs, keep only meaningful results
+# (Rule: exclude contents with wildcard, then re-include specific files/dirs)
+outputs/*
+
+# Keep all thesis diagrams
+!outputs/diagrams/
+
+# Keep final quality report only
+!outputs/quality/
+outputs/quality/*
+!outputs/quality/quality_report.json
+
+# Keep alignment report only
+!outputs/reports/
+outputs/reports/*
+!outputs/reports/alignment_report.csv
+
+# Keep final reasoned KG only
+!outputs/knowledge_graph/
+outputs/knowledge_graph/*
+!outputs/knowledge_graph/merged_kg_reasoned.owl
+
+# Keep final trained model only (not episode checkpoints)
+!outputs/models/
+outputs/models/*
+!outputs/models/dqn_repair_final.pt
+
+# Keep RL training trace only
+!outputs/rl_repair_traces/
+outputs/rl_repair_traces/*
+!outputs/rl_repair_traces/repair_trace.jsonl
+
+# Generated corpus text (produced by prepare-corpus step)
+data/01_corpus/corpus.txt

@@ -1,0 +1,1314 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/sensor_ontology.owl#"
+     xml:base="http://example.org/sensor_ontology.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sensor_ontology="http://example.org/sensor_ontology.owl#">
+    <owl:Ontology rdf:about="http://example.org/sensor_ontology.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#category -->
+
+    <owl:AnnotationProperty rdf:about="http://example.org/sensor_ontology.owl#category"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#has_part_directly -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/sensor_ontology.owl#has_part_directly">
+        <rdfs:domain rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:range rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#has_property -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/sensor_ontology.owl#has_property">
+        <rdfs:domain rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:range rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#implements -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/sensor_ontology.owl#implements">
+        <rdfs:domain rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:range rdf:resource="http://example.org/sensor_ontology.owl#Technology"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl# -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#applanix_posav_410"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#data_storage_facilities"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#oscillating_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_equipment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pulse_frequency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#rotating_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#trimble_db950_l1/l2"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;data_storage_facilities&apos;,_&apos;property&apos;:_&apos;type&apos;,_&apos;value&apos;:_&apos;[10]&apos;}"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;pulse_frequency&apos;,_&apos;property&apos;:_&apos;range_(min-max)_[hz]&apos;,_&apos;value&apos;:_&apos;250,000hz&apos;}"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;rotating_mirror&apos;,_&apos;property&apos;:_&apos;scan_angle_(max.)_[deg]&apos;,_&apos;value&apos;:_&apos;150hz&apos;}"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#Part -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#Part">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#Property -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#Property">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#Sensor -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#Sensor">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#Technology -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#Technology">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#aerocontrol -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#aerocontrol">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#aerospatial -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#aerospatial">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#airborne_lidar -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#airborne_lidar">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#altm_gemini -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#altm_gemini">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pulse_rate:_167,000_pulses_per_second"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#applanix_dss -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#applanix_dss">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pos"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#accuracy:_0.015/0.015/0.035_deg"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#applanix_posav_310 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#applanix_posav_310">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#applanix_posav_410 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#applanix_posav_410">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#data_storage_facilities -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#data_storage_facilities">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#dimensions -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#dimensions">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#entry_level_lidar -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#entry_level_lidar">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#fcms -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#fcms">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Technology"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#flex-ible_external_sensor_integration -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#flex-ible_external_sensor_integration">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#fli-map_400 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#fli-map_400">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pulse_rate:_167,000_pulses_per_second"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#frame_cameras -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#frame_cameras">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#fugro_fli-map_400 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#fugro_fli-map_400">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#full_waveform_processing -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#full_waveform_processing">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#igi_litemapper_2400 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#igi_litemapper_2400">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#lidar_scanner"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pulse_rate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#dimensions"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#measurement_accuracy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#scan_rates"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#wavelength"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#weight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pulse_rate:_167,000_pulses/second"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lidar_scanner</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#igi_litemapper_5600 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#igi_litemapper_5600">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#lidar_scanner"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#dimensions"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#measurement_accuracy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#scan_rates"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#wavelength"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#weight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lidar_scanner</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#leica_fpes -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#leica_fpes">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#range:_80m_+_oscillating_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#leica_geosystems_als50-ii -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#leica_geosystems_als50-ii">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#lidar_scanner"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#dimensions"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#measurement_accuracy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#scan_rates"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#wavelength"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#weight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#implements"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#gps/imu_subsystem_for_positioning_accuracy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lidar_scanner</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#lidar -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#lidar">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#lidar_scanner -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#lidar_scanner">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#measurement_accuracy -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#measurement_accuracy">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#optech_altm_gemini -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#optech_altm_gemini">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#flex-ible_external_sensor_integration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#oscillating_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pos"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#rotating_multi-facet_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#accuracy:_0.0025/0.0025/0.005_deg"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#control_rack_size:_65_x_59_x_49cm"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#prf:_167khz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#pulse_rate:_167khz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#range:_200m"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#range:_200m_agl"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#resolution:_0.0025/0.0025/0.005°"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#implements"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#fcms"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#implements"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#ros2"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#oscillating_mirror -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#oscillating_mirror">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#pos -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#pos">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#power_consumption -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#power_consumption">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#power_equipment -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#power_equipment">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#pulse_frequency -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#pulse_frequency">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#pulse_rate -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#pulse_rate">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#resolution -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#resolution">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#riegl_lms-s560-a -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#riegl_lms-s560-a">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#aerospatial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#dimensions"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#resolution"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#wavelength"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#weight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aerospatial</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#riegl_lms-s560-i -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#riegl_lms-s560-i">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#aerospatial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#dimensions"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#resolution"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#wavelength"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#weight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aerospatial</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#ros2 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#ros2">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Technology"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#rotating_mirror -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#rotating_mirror">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#rotating_multi-facet_mirror -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#rotating_multi-facet_mirror">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#scan_rates -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#scan_rates">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#surveying_lidar -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#surveying_lidar">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#toposys_combined_system -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#toposys_combined_system">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#toposys_gmbh_harrier -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#toposys_gmbh_harrier">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#surveying_lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#applanix_posav_310"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#rotating_multi-facet_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#frame_rate:_3/280/430_(80°),_3/250/380"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#mirror_angle:_60°/80°"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_requirements:_28_v_dc,_13_a_max"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#range:_n/a"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#resolution:_0.015/0.015/0.035°"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#rotation_speed:_6_-_80hz,_5_-_60hz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#implements"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#trackair_toppit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">surveying_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#trackair_toppit -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#trackair_toppit">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Technology"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#wavelength -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#wavelength">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#weight -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#weight">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#accuracy:_0.0025/0.0025/0.005_deg -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#accuracy:_0.0025/0.0025/0.005_deg">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#accuracy:_0.015/0.015/0.035_deg -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#accuracy:_0.015/0.015/0.035_deg">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#accuracy:_0.5_(@150m,_150km/h),_0.7_(@150m,_150km/h) -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#accuracy:_0.5_(@150m,_150km/h),_0.7_(@150m,_150km/h)">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#angular_resolution:_0.3_mrad_with_1_mrad_option -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#angular_resolution:_0.3_mrad_with_1_mrad_option">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#bit_depth:_16_bits -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#bit_depth:_16_bits">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#control_rack_size:_65_x_59_x_49cm -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#control_rack_size:_65_x_59_x_49cm">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#data_rate:_practically_unlimited -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#data_rate:_practically_unlimited">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#frame_rate:_3/280/430_(80°),_3/250/380 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#frame_rate:_3/280/430_(80°),_3/250/380">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#gps/imu_subsystem_for_positioning_accuracy -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#gps/imu_subsystem_for_positioning_accuracy">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Technology"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#lidar_terrain_mapping_system_(litemapper)_2400 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#lidar_terrain_mapping_system_(litemapper)_2400">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#airborne_lidar"/>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airborne_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#mirror_angle:_60°/80° -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#mirror_angle:_60°/80°">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#power_consumption:_120_w -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#power_consumption:_120_w">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#power_consumption:_43_w -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#power_consumption:_43_w">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#power_requirements:_28_v_dc,_13_a_max -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#power_requirements:_28_v_dc,_13_a_max">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#prf:_167khz -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#prf:_167khz">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#pulse_rate:_167khz -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#pulse_rate:_167khz">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#pulse_rate:_167,000_pulses_per_second -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#pulse_rate:_167,000_pulses_per_second">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#pulse_rate:_167,000_pulses/second -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#pulse_rate:_167,000_pulses/second">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#range:_150m -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#range:_150m">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#range:_200m -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#range:_200m">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#range:_200m_agl -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#range:_200m_agl">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#range:_2m_/_200m_/_350m -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#range:_2m_/_200m_/_350m">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#range:_80m_+_oscillating_mirror -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#range:_80m_+_oscillating_mirror">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#range:_n/a -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#range:_n/a">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#resolution:_0.0025/0.0025/0.005° -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#resolution:_0.0025/0.0025/0.005°">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#resolution:_0.015/0.015/0.035° -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#resolution:_0.015/0.015/0.035°">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#riegl_lms-q240i-60/lms-q240i-80 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#riegl_lms-q240i-60/lms-q240i-80">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#aerospatial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#dimensions"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#resolution"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#wavelength"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#weight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aerospatial</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#riegl_lms-s560-i/lms-s560-a -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#riegl_lms-s560-i/lms-s560-a">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#aerocontrol"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#full_waveform_processing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#rotating_multi-facet_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#angular_resolution:_0.3_mrad_with_1_mrad_option"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#bit_depth:_16_bits"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#data_rate:_practically_unlimited"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption:_120_w"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aerocontrol</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#riegl_lms_q240i-60/lms-q240i-80 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#riegl_lms_q240i-60/lms-q240i-80">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#aerocontrol"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#rotating_multi-facet_mirror"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#angular_resolution:_0.3_mrad_with_1_mrad_option"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#bit_depth:_16_bits"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#data_rate:_practically_unlimited"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#power_consumption:_43_w"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#range:_2m_/_200m_/_350m"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aerocontrol</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#rotation_speed:_6_-_80hz,_5_-_60hz -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#rotation_speed:_6_-_80hz,_5_-_60hz">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#trimble_db950_l1/l2 -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#trimble_db950_l1/l2">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#turnkey_solution_(toposys_gmbh_harrier) -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#turnkey_solution_(toposys_gmbh_harrier)">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Sensor"/>
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#entry_level_lidar"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_part_directly"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#frame_cameras"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#accuracy:_0.5_(@150m,_150km/h),_0.7_(@150m,_150km/h)"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sensor_ontology.owl#has_property"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sensor_ontology.owl#range:_150m"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">entry_level_lidar</category>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;data_storage_facilities&apos;,_&apos;property&apos;:_&apos;type&apos;,_&apos;value&apos;:_&apos;[10]&apos;} -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;data_storage_facilities&apos;,_&apos;property&apos;:_&apos;type&apos;,_&apos;value&apos;:_&apos;[10]&apos;}">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;pulse_frequency&apos;,_&apos;property&apos;:_&apos;range_(min-max)_[hz]&apos;,_&apos;value&apos;:_&apos;250,000hz&apos;} -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;pulse_frequency&apos;,_&apos;property&apos;:_&apos;range_(min-max)_[hz]&apos;,_&apos;value&apos;:_&apos;250,000hz&apos;}">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;rotating_mirror&apos;,_&apos;property&apos;:_&apos;scan_angle_(max.)_[deg]&apos;,_&apos;value&apos;:_&apos;150hz&apos;} -->
+
+    <owl:Class rdf:about="http://example.org/sensor_ontology.owl#{&apos;component&apos;:_&apos;rotating_mirror&apos;,_&apos;property&apos;:_&apos;scan_angle_(max.)_[deg]&apos;,_&apos;value&apos;:_&apos;150hz&apos;}">
+        <rdfs:subClassOf rdf:resource="http://example.org/sensor_ontology.owl#Property"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi -->
+

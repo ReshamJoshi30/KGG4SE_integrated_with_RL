@@ -1,0 +1,188 @@
+{
+  "stats": {
+    "total_triples": 2064,
+    "unique_subjects": 620,
+    "unique_predicates": 42,
+    "unique_objects": 906,
+    "unique_entities": 999
+  },
+  "duplicate_triples": [],
+  "top_subjects": [
+    {
+      "value": "http://w3id.org/gbo/mgg",
+      "count": 17
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery",
+      "count": 12
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_automotive",
+      "count": 10
+    },
+    {
+      "value": "http://w3id.org/gbo/automatic_cruise_control",
+      "count": 10
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_aes",
+      "count": 9
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_starting_system",
+      "count": 9
+    },
+    {
+      "value": "http://w3id.org/gbo/sensor",
+      "count": 9
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_hybrid_energy_system",
+      "count": 9
+    },
+    {
+      "value": "http://w3id.org/gbo#hardware_component",
+      "count": 9
+    },
+    {
+      "value": "http://w3id.org/gbo#hardware_element",
+      "count": 8
+    }
+  ],
+  "top_predicates": [
+    {
+      "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "count": 577
+    },
+    {
+      "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "count": 484
+    },
+    {
+      "value": "http://www.w3.org/2000/01/rdf-schema#label",
+      "count": 262
+    },
+    {
+      "value": "http://www.w3.org/2002/07/owl#onProperty",
+      "count": 234
+    },
+    {
+      "value": "http://www.w3.org/2002/07/owl#someValuesFrom",
+      "count": 220
+    },
+    {
+      "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+      "count": 55
+    },
+    {
+      "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+      "count": 55
+    },
+    {
+      "value": "http://purl.obolibrary.org/obo/IAO_0000115",
+      "count": 43
+    },
+    {
+      "value": "http://purl.obolibrary.org/obo/IAO_0000112",
+      "count": 19
+    },
+    {
+      "value": "http://www.w3.org/2002/07/owl#intersectionOf",
+      "count": 11
+    }
+  ],
+  "top_objects": [
+    {
+      "value": "http://www.w3.org/2002/07/owl#Class",
+      "count": 295
+    },
+    {
+      "value": "http://www.w3.org/2002/07/owl#Restriction",
+      "count": 234
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property",
+      "count": 60
+    },
+    {
+      "value": "http://www.ontology-of-units-of-measure.org/resource/om-2/quantity",
+      "count": 54
+    },
+    {
+      "value": "http://w3id.org/gbo#hardware_component",
+      "count": 53
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly",
+      "count": 51
+    },
+    {
+      "value": "http://w3id.org/gbo#function",
+      "count": 47
+    },
+    {
+      "value": "http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly",
+      "count": 43
+    },
+    {
+      "value": "http://w3id.org/gbo#system",
+      "count": 42
+    },
+    {
+      "value": "http://w3id.org/gbo#component",
+      "count": 29
+    }
+  ],
+  "sample_triples": [
+    {
+      "subject": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power",
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "object": "maximum_power"
+    },
+    {
+      "subject": "Nba950f15d2cf49428078421f86619072",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "object": "http://www.w3.org/2002/07/owl#Restriction"
+    },
+    {
+      "subject": "N6b73b5456a694a0e8944c4fc5a855224",
+      "predicate": "http://www.w3.org/2002/07/owl#someValuesFrom",
+      "object": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_car_battery"
+    },
+    {
+      "subject": "Nf8d4f62b5f504d7684dc3a06d95741dc",
+      "predicate": "http://www.w3.org/2002/07/owl#someValuesFrom",
+      "object": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_mppt"
+    },
+    {
+      "subject": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_mppt",
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "object": "N0e2432dce61f4ea2b93898a2fe58f785"
+    },
+    {
+      "subject": "N9fec267b589e4906b90613c23cc6c13d",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+      "object": "N3c3715ccf79541d198feaf014e887221"
+    },
+    {
+      "subject": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_extra_battery_bank",
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "object": "extra_battery_bank"
+    },
+    {
+      "subject": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_pv_module",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "object": "http://www.w3.org/2002/07/owl#Class"
+    },
+    {
+      "subject": "N5a3dee94ebef450b8485baeef0e930f7",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+      "object": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+    },
+    {
+      "subject": "Ncb7be537ef6d44d3b8770aab54970aca",
+      "predicate": "http://www.w3.org/2002/07/owl#someValuesFrom",
+      "object": "http://cpsagila.cs.uni-kl.de/GENIALOnt#_12v_lead_acid_battery"
+    }
+  ]
+}

@@ -1,0 +1,2178 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns3="http://www.w3.org/2000/01/rdf-schema#" xmlns:ns4="http://purl.org/innovation/ns#" xmlns:ns5="http://www.w3.org/2004/02/skos/core#" xmlns:ns6="http://www.w3.org/2001/XMLSchema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xml:base="http://purl.org/innovation/ns">
+  <ns1:Ontology rdf:about="">
+    <dc:modified xml:lang="en">2012-07-22</dc:modified>
+    <dc:title xml:lang="en">Ontology for Innovation</dc:title>
+    <dc:rights xml:lang="en">The Ontology for Innovation is available under the Creative Commons Attribution 3.0 Unported license; see http://creativecommons.org/licenses/by/3.0/. In a nutshell, you are free to copy, distribute and transmit the work; to remix/adapt the work (e.g. to import the ontology and create specializations of its elements), as long as you attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work). This copyright applies to the specification and accompanying documentation in RDF. Regarding underlying technology, this ontology uses W3C's RDF technology, an open Web standard that can be freely used by anyone.</dc:rights>
+    <ns3:comment xml:lang="en">The exact definition of innovation is debatable both in the academic and pratical sense. Neither an art or a science, its core function is to meet the wants and needs of others. It should be seen as separate but invaluable to enterprise, being concerned more with the application rather than the capitalisation of an idea.</ns3:comment>
+    <ns1:versionInfo xml:lang="en">Version 1.0.0, 22 July 2012</ns1:versionInfo>
+    <dc:creator xml:lang="en">William Greenly, mailto:admin@lexicater.co.uk</dc:creator>
+  </ns1:Ontology>
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/modified" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/created" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator" />
+  <ns1:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/rights" />
+  <ns1:ObjectProperty rdf:about="#affects">
+    <ns3:label xml:lang="en">affects</ns3:label>
+    <ns3:comment xml:lang="en">The group of things affected by a problem. Again it is recommended that a SKOS model is used for such instances.</ns3:comment>
+    <ns3:domain rdf:resource="#Problem" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#buildsOn">
+    <ns3:label xml:lang="en">buildsOn</ns3:label>
+    <ns3:comment xml:lang="en">It is common for one innovation to build upon others. It doesn't neccessarily denote or infer that the subject has improvements on the object or is enabled by the object.</ns3:comment>
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns3:range rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#causesDisruption">
+    <ns3:label xml:lang="en">causesDisruption</ns3:label>
+    <ns3:comment xml:lang="en">Innovation is always disruptive, either directly or indirectly. Many innovators risk livelihood and reputation in the pursuit of innovation, many organisations capitalise on innovation, many organisations fail as a result.</ns3:comment>
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns3:range rdf:resource="#Disruption" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#deprecates">
+    <ns3:label xml:lang="en">deprecates</ns3:label>
+    <ns3:comment xml:lang="en">Innovation will invariabily deprecate the need for an existing products or services, but not necessarily related products or services e.g the automobile deprecates the horse and carriage, but not necessarily the organisations that provide a carriage service.</ns3:comment>
+    <ns3:domain rdf:resource="#Disruption" />
+    <ns1:inverseOf rdf:resource="#isDeprecatedBy" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#developedBy">
+    <ns3:label xml:lang="en">developedBy</ns3:label>
+    <ns3:comment xml:lang="en">Relates an innovation to the innovator or innovators who developed it. Innovators are generally groups, organisations or people</ns3:comment>
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns3:range rdf:resource="#Innovator" />
+    <ns3:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/maker" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#embodiedBy">
+    <ns3:label xml:lang="en">embodiedBy</ns3:label>
+    <ns3:comment xml:lang="en">Relates an innovation to a device, process, product, or service (make, model or brand) that embodies the innovation e.g The innovation HTTP is emobdied by the browser Firefox e.g The innovation anibiotic is embodied by Amoxicillin</ns3:comment>
+    <ns3:range rdf:resource="#Embodiment" />
+    <ns3:domain rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#embodies">
+    <ns3:label xml:lang="en">embodies</ns3:label>
+    <ns3:comment xml:lang="en">Relates a device, process, product, or service (make, model or brand) to an innovation that it embodies e.g The Firefox web browser embodies the innovation HTTP e.g Amoxicillin embodies the innovation Anibiotic</ns3:comment>
+    <ns3:domain rdf:resource="#Embodiment" />
+    <ns3:range rdf:resource="#Innovation" />
+    <ns1:inverseOf rdf:resource="#embodiedBy" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#enabledBy">
+    <ns3:label xml:lang="en">enabledBy</ns3:label>
+    <ns3:comment xml:lang="en">Where one innovation is enabled by another innovation or innovations. It is common for innovators to have a solution to a problem that is dependent on something else not yet known, discovered, invented or innovated.</ns3:comment>
+    <ns3:range rdf:resource="#Innovation" />
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns1:inverseOf rdf:resource="#enables" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#enables">
+    <ns3:label xml:lang="en">enables</ns3:label>
+    <ns3:comment xml:lang="en">Where one innovation enables a different innovation or innovations.</ns3:comment>
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns3:range rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#fulfils">
+    <ns3:label xml:lang="en">fulfils</ns3:label>
+    <ns3:comment xml:lang="en">The applicabiity of an idea can be tested by its ability to fulfil a need. This property therefore links an innovation to a need.</ns3:comment>
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns3:range rdf:resource="#Need" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#hasBenefit">
+    <ns3:label xml:lang="en">hasBenefit</ns3:label>
+    <ns3:comment xml:lang="en">Relates an innovation to some benefit or benefts of that innovation.</ns3:comment>
+    <ns3:range rdf:resource="#Benefit" />
+    <ns3:domain rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#hasDeveloped">
+    <ns3:label xml:lang="en">hasDeveloped</ns3:label>
+    <ns3:comment xml:lang="en">Relates innovator to the innovations they have developed. Innovators can be groups, organisations or people.</ns3:comment>
+    <ns3:range rdf:resource="#Innovation" />
+    <ns3:domain rdf:resource="#Innovator" />
+    <ns3:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/made" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#hasDevelopmentStage">
+    <ns3:label xml:lang="en">hasDevelopmentStage</ns3:label>
+    <ns3:comment xml:lang="en">Innovation is often the encapsulation of different stages of development</ns3:comment>
+    <ns3:range rdf:resource="#DevelopmentStage" />
+    <ns3:domain rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#hasImprovement">
+    <ns3:label xml:lang="en">hasImprovement</ns3:label>
+    <ns3:comment xml:lang="en">Links an innovation to some improvement or improvements it provides.</ns3:comment>
+    <ns3:range rdf:resource="#Improvement" />
+    <ns3:domain rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#hasSympton">
+    <ns3:label xml:lang="en">hasSympton</ns3:label>
+    <ns3:comment xml:lang="en">A symptom of a problem. It is recommended that Symptoms follow a SKOS hierarchy.</ns3:comment>
+    <ns3:domain rdf:resource="#Problem" />
+    <ns3:range rdf:resource="#Sympton" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#hasUsage">
+    <ns3:label xml:lang="en">hasUsage</ns3:label>
+    <ns3:comment xml:lang="en">The problem or need of some individual, group or organisation.</ns3:comment>
+    <ns3:domain rdf:resource="#Embodiment" />
+    <ns3:range rdf:resource="#Usage" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#improves">
+    <ns3:label xml:lang="en">improves</ns3:label>
+    <ns3:comment xml:lang="en">Links an improvement to something it improves.</ns3:comment>
+    <ns3:domain rdf:resource="#Improvement" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#improvesEffectivenessOf">
+    <ns3:label xml:lang="en">improvesEffectivenessOf</ns3:label>
+    <ns3:comment xml:lang="en">An improvement to the effectiveness of the object i.e effectuates an increase in the desired result. e.g the combustion engine improves the effectiveness of a vehicle. Without consideration for cost of increase i.e does not necessitate an improvement in efficiciency.</ns3:comment>
+    <ns3:domain rdf:resource="#Improvement" />
+    <ns3:subPropertyOf rdf:resource="#improves" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#improvesEfficiencyOf">
+    <ns3:label xml:lang="en">improvesEfficiencyOf</ns3:label>
+    <ns3:comment xml:lang="en">An improvement to the efficiency of the of the object. i.e reducing the cost, waste, time or skill required to produce the desired (same) results e.g Compared to other modes of transportation, a bicycle is efficient because it enables people to get to their destination with less effort.</ns3:comment>
+    <ns3:domain rdf:resource="#Improvement" />
+    <ns3:subPropertyOf rdf:resource="#improves" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#improvesQualityOf">
+    <ns3:label xml:lang="en">improvesQualityOf</ns3:label>
+    <ns3:comment xml:lang="en">An improvement to the reliability, durability, accessibility, usability or some other non-functional aspect of the object.</ns3:comment>
+    <ns3:domain rdf:resource="#Improvement" />
+    <ns3:subPropertyOf rdf:resource="#improves" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#improvesValueOf">
+    <ns3:label xml:lang="en">improvesValueOf</ns3:label>
+    <ns3:comment xml:lang="en">An improvement to the worth or value of the object i.e as a result of the improvement something becomes more valuable or worthwhile. e.g: Nuclear Fission improves the value of Uranium. HTTP improves the value of the internet.</ns3:comment>
+    <ns3:domain rdf:resource="#Improvement" />
+    <ns3:subPropertyOf rdf:resource="#improves" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#isDeprecatedBy">
+    <ns3:label xml:lang="en">isDeprecatedBy</ns3:label>
+    <ns3:comment xml:lang="en">The agents or things deprecated by a particular innovation.</ns3:comment>
+    <ns3:range rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#isDeveloping">
+    <ns3:label xml:lang="en">isDeveloping</ns3:label>
+    <ns3:comment xml:lang="en">Relates an innovator to a current innovation that they are developing.</ns3:comment>
+    <ns3:range rdf:resource="#Innovation" />
+    <ns3:domain rdf:resource="#Innovator" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#isLiberatedBy">
+    <ns3:label xml:lang="en">isLiberatedBy</ns3:label>
+    <ns3:comment xml:lang="en">The agents or things liberated by a particular innovation.</ns3:comment>
+    <ns3:range rdf:resource="#Innovation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#liberates">
+    <ns3:label xml:lang="en">liberates</ns3:label>
+    <ns3:comment xml:lang="en">Innovation has the ability to free or liberate some kind of repressed, constrained or untapped potential.</ns3:comment>
+    <ns3:domain rdf:resource="#Disruption" />
+    <ns1:inverseOf rdf:resource="#isLiberatedBy" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#manifestedBy">
+    <ns3:label xml:lang="en">manifestedBy</ns3:label>
+    <ns3:comment xml:lang="en">The problems that manifest a particular need. A need is generally described by its problems.</ns3:comment>
+    <ns3:domain rdf:resource="#Need" />
+    <ns3:range rdf:resource="#Problem" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#manifests">
+    <ns3:label xml:lang="en">manifests</ns3:label>
+    <ns3:comment xml:lang="en">The problem that manifests a need. The problem defines the characteristics of the need.</ns3:comment>
+    <ns3:range rdf:resource="#Need" />
+    <ns3:domain rdf:resource="#Problem" />
+    <ns1:inverseOf rdf:resource="#manifestedBy" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#solves">
+    <ns3:label xml:lang="en">solves</ns3:label>
+    <ns3:comment xml:lang="en">Connects an innovation to the problems it solves. Generally speaking, innovations that solve a need do so by solving similar problems associated with the need.</ns3:comment>
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns3:range rdf:resource="#Problem" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#usedBy">
+    <ns3:label xml:lang="en">usedBy</ns3:label>
+    <ns3:comment xml:lang="en">Relates a usage node to the thing that makes use of the device or process i.e the activator or implementor.</ns3:comment>
+    <ns3:domain rdf:resource="#Usage" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#usedOn">
+    <ns3:label xml:lang="en">usedOn</ns3:label>
+    <ns3:comment xml:lang="en">Defines the recipient use.</ns3:comment>
+    <ns3:domain rdf:resource="#Usage" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="#usedWith">
+    <ns3:label xml:lang="en">usedWith</ns3:label>
+    <ns3:comment xml:lang="en">Where something is used in conjunction with something else.</ns3:comment>
+    <ns3:domain rdf:resource="#Usage" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#inScheme" />
+  <ns1:DatatypeProperty rdf:about="#expectedMarketEntry">
+    <ns3:label xml:lang="en">expectedMarketEntry</ns3:label>
+    <ns3:comment xml:lang="en">The expected date of introduction into the market. Mass production, commoditisation or availability for sale.</ns3:comment>
+    <ns3:domain rdf:resource="#Innovation" />
+    <ns3:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel" />
+  <ns1:Class rdf:about="#Benefit">
+    <ns3:label xml:lang="en">Benefit</ns3:label>
+    <ns3:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">A benefit to something or someone.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#DevelopmentStage">
+    <ns3:label xml:lang="en">DevelopmentStage</ns3:label>
+    <ns3:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">A stage of development. An example set of development stages, but equally those used to describe software lifecylces, music production lifecylces or anything creative can be used. e.g Define a need, Design a solution, Develop the opportunity, Demonstrate the benefits, Distribute the product. (taken from the 5 D's defined by the National Innovation Centre, 2011)</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Disruption">
+    <ns3:label xml:lang="en">Disruption</ns3:label>
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns3:comment xml:lang="en">Disruption caused by innovation. Typically this due to the liberation of deprecation of something.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Embodiment">
+    <ns3:label xml:lang="en">Embodiment</ns3:label>
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">The physical or tangible manfestiation of some idea, invention or innovation. A device, process, service, or product that emobodies some idea, invention or innovation. e.g The Firefox web browser is an embodiment of the innovation HTTP e.g Amoxicillin is an embodiment of the innovation Anibiotic</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Improvement">
+    <ns3:label xml:lang="en">Improvement</ns3:label>
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">The class of things that are improvements to something i.e making something better than it was. Specific improvements include those that provide improved efficiency, effectiveness, value or quality.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Innovation">
+    <ns3:label xml:lang="en">Innovation</ns3:label>
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">The innovation is a conceptual entity, concerned with the idea. Its application comes in the form of benefits and improvements and the things that embody it.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Innovator">
+    <ns3:label xml:lang="en">Innovator</ns3:label>
+    <ns3:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+    <ns3:comment xml:lang="en">A person, groups or organisation that can think out of the box, show great expertise or most importantly can find solutions to problems and meet the wants and needs of others.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Need">
+    <ns3:label xml:lang="en">Need</ns3:label>
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">A need of a particular group or indivual of or for something that is lacking or requires improvement or problem solving.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Problem">
+    <ns3:label xml:lang="en">Problem</ns3:label>
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">The manifestation of a need. This is represented by a set of symptoms (general phenoma) affecting groups of things.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Symptom">
+    <ns3:label xml:lang="en">Symptom</ns3:label>
+    <ns3:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Usage" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">A symptom of a problem. This class is intended to comprise of SKOS concepts belonging to different schemes.</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="#Usage">
+    <ns3:label xml:lang="en">Usage</ns3:label>
+    <ns1:disjointWith rdf:resource="#Improvement" />
+    <ns1:disjointWith rdf:resource="#Innovation" />
+    <ns1:disjointWith rdf:resource="#Embodiment" />
+    <ns1:disjointWith rdf:resource="#Need" />
+    <ns1:disjointWith rdf:resource="#Problem" />
+    <ns1:disjointWith rdf:resource="#Symptom" />
+    <ns1:disjointWith rdf:resource="#Benefit" />
+    <ns1:disjointWith rdf:resource="#DevelopmentStage" />
+    <ns1:disjointWith rdf:resource="#Disruption" />
+    <ns3:comment xml:lang="en">The application or usage of a device or process. Typically this is described using the properties usedBy, usedOn and usedWith</ns3:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.w3.org/2002/07/owl#Thing" />
+  <ns1:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept" />
+  <ns1:Class rdf:about="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+  <ns4:DevelopmentStage rdf:about="#d1-defining-the-need">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns3:label xml:lang="en">d1-defining-the-need</ns3:label>
+    <ns3:comment xml:lang="en">A solution will have the best the chance of success if there is a clear and accurate understanding of the users needs.</ns3:comment>
+    <ns5:prefLabel xml:lang="en">Defining the need</ns5:prefLabel>
+    <ns5:inScheme rdf:resource="#stages-of-innovation" />
+  </ns4:DevelopmentStage>
+  <ns1:Thing rdf:about="#d2-designing-the-solution">
+    <rdf:type rdf:resource="#DevelopmentStage" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns3:label xml:lang="en">d2-designing-the-solution</ns3:label>
+    <ns3:comment xml:lang="en">A well designed innovation is more likely to succeed. Looking at your users needs, work out how your innovatiion can meet them. Indentify the benefits, considering the users or recipients that will gain from your innovation. Outline final designs for your innovation and how they will meet the usersâ€™ needs. Decide when to stop designing and, if appropriate, start developing the idea.</ns3:comment>
+    <ns5:prefLabel xml:lang="en">Designing the solution</ns5:prefLabel>
+    <ns5:inScheme rdf:resource="#stages-of-innovation" />
+  </ns1:Thing>
+  <ns4:DevelopmentStage rdf:about="#d3-developing-the-opportunity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns3:label xml:lang="en">d3-developing-the-opportunity</ns3:label>
+    <ns3:comment xml:lang="en">Develop a prototype allowing for some â€˜user preferenceâ€™ analysis which can be fed back to the designers.</ns3:comment>
+    <ns5:prefLabel xml:lang="en">Developing the opportunity</ns5:prefLabel>
+    <ns5:inScheme rdf:resource="#stages-of-innovation" />
+  </ns4:DevelopmentStage>
+  <ns1:Thing rdf:about="#d4-demonstrating-the-benefits">
+    <rdf:type rdf:resource="#DevelopmentStage" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns3:label xml:lang="en">d4-demonstrating-the-benefits</ns3:label>
+    <ns5:prefLabel xml:lang="en">Demonstrating the benefits</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Test and demonstrate both the functional and non-functional qualities of the solution, emphasising the beneftis to the user.</ns3:comment>
+    <ns5:inScheme rdf:resource="#stages-of-innovation" />
+  </ns1:Thing>
+  <ns4:DevelopmentStage rdf:about="#d5-distributing-the-product">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns3:label xml:lang="en">d5-distributing-the-product</ns3:label>
+    <ns5:prefLabel xml:lang="en">Distributing the product</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Execute marketing plan and conducting key post-launch checks.</ns3:comment>
+    <ns5:inScheme rdf:resource="#stages-of-innovation" />
+  </ns4:DevelopmentStage>
+  <ns1:Thing rdf:about="#economic-benefits">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <ns3:label xml:lang="en">economic-benefits</ns3:label>
+    <ns5:prefLabel xml:lang="en">Economic benefits</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those benefits that are of an economic nature.</ns3:comment>
+  </ns1:Thing>
+  <ns5:ConceptScheme rdf:about="#economic-symptoms">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">economic-symptoms</ns3:label>
+    <ns5:prefLabel xml:lang="en">Economic symptoms</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those symptons that are of an economic nature.</ns3:comment>
+  </ns5:ConceptScheme>
+  <ns5:ConceptScheme rdf:about="#health-benefits">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">health-benefits</ns3:label>
+    <ns5:prefLabel xml:lang="en">Health benefits</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those benefits that are of a health related nature.</ns3:comment>
+  </ns5:ConceptScheme>
+  <ns1:Thing rdf:about="#health-symptoms">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <ns3:label xml:lang="en">health-symptoms</ns3:label>
+    <ns5:prefLabel xml:lang="en">Health symptoms</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those symptons that are health related.</ns3:comment>
+  </ns1:Thing>
+  <ns5:ConceptScheme rdf:about="#legal-benefits">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">legal-benefits</ns3:label>
+    <ns5:prefLabel xml:lang="en">Legal benefits</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those benefits that are of a legal nature.</ns3:comment>
+  </ns5:ConceptScheme>
+  <ns5:ConceptScheme rdf:about="#legal-symptoms">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">legal-symptoms</ns3:label>
+    <ns5:prefLabel xml:lang="en">Legal symptoms</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those symptons that are of a legal nature.</ns3:comment>
+  </ns5:ConceptScheme>
+  <ns5:ConceptScheme rdf:about="#scientific-benefits">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">scientific-benefits</ns3:label>
+    <ns5:prefLabel xml:lang="en">Scientific benefits</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those benefits that are of a scientific nature.</ns3:comment>
+  </ns5:ConceptScheme>
+  <ns5:ConceptScheme rdf:about="#scientific-symptoms">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">scientific-symptoms</ns3:label>
+    <ns5:prefLabel xml:lang="en">Scientific symptoms</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those symptons that are of a scientific nature.</ns3:comment>
+  </ns5:ConceptScheme>
+  <ns5:ConceptScheme rdf:about="#social-benefits">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">social-benefits</ns3:label>
+    <ns5:prefLabel xml:lang="en">Social benefits</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those benefits that are of a social nature.</ns3:comment>
+  </ns5:ConceptScheme>
+  <ns1:Thing rdf:about="#social-symptoms">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <ns3:label xml:lang="en">social-symptoms</ns3:label>
+    <ns5:prefLabel xml:lang="en">Social symptoms</ns5:prefLabel>
+    <ns3:comment xml:lang="en">Those symptons that are of a social nature.</ns3:comment>
+  </ns1:Thing>
+  <ns5:ConceptScheme rdf:about="#stages-of-innovation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns3:label xml:lang="en">stages-of-innovation</ns3:label>
+    <ns3:comment xml:lang="en">A scheme consisting of the the stages of development, comprised by the National Innovation Centre. It could be inferred by the asserted facts about an innovation what stage it qualifies for e.g if it is asserted that an innovation fulfils a particular need, then it qualifies as beingat least at development stage 1 (defining the need).</ns3:comment>
+    <ns5:prefLabel xml:lang="en">Stages of innovation</ns5:prefLabel>
+  </ns5:ConceptScheme>
+  <ns1:Class rdf:about="#_ThisProblem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ThisProblem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveElectricalSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_ThisProblem" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveElectricalSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelCosts">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelCosts</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveElectricalSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_FuelCosts" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveElectricalSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ProblemsAbove">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ProblemsAbove</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_ProblemsAbove" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_LoadOnAlternator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">LoadOnAlternator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_LoadOnAlternator" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelConsumption">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelConsumption</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_FuelConsumption" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryProtection">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryProtection</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryManagementScheme">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_BatteryProtection" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryManagementScheme</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ThisProblem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ThisProblem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveElectricalSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_ThisProblem" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveElectricalSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelCosts">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelCosts</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveElectricalSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_FuelCosts" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveElectricalSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ProblemsAbove">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ProblemsAbove</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_ProblemsAbove" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_LoadOnAlternator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">LoadOnAlternator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_LoadOnAlternator" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SleepModeCurrents">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SleepModeCurrents</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_SleepModeCurrents" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelConsumption">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelConsumption</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_FuelConsumption" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryProtection">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryProtection</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryManagementScheme">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_BatteryProtection" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryManagementScheme</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ModelledAsSeriesResistorAndConstantVoltageSource">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ModelledAsSeriesResistorAndConstantVoltageSource</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Battery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_ModelledAsSeriesResistorAndConstantVoltageSource" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Battery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_PvArray">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">PvArray</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MathematicalEquations">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_PvArray" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MathematicalEquations</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SeriesAndParallelNoOfCells">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SeriesAndParallelNoOfCells</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SolarCellEquations">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_SeriesAndParallelNoOfCells" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SolarCellEquations</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Series-parallelCombinationOfSolarCells">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Series-parallelCombinationOfSolarCells</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Array">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_Series-parallelCombinationOfSolarCells" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Array</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_PvCell">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">PvCell</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Single-diodeElectricalEquivalentCircuit">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_PvCell" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Single-diodeElectricalEquivalentCircuit</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_PowerElectronicCircuit">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">PowerElectronicCircuit</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BuckConverter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_PowerElectronicCircuit" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BuckConverter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_StepsDownInputDcVoltage">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">StepsDownInputDcVoltage</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BuckConverter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_StepsDownInputDcVoltage" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BuckConverter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_OutputLoad">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">OutputLoad</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BuckConverter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_OutputLoad" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BuckConverter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CarTireDiameter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CarTireDiameter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_EngineAveragedModel">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_CarTireDiameter" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">EngineAveragedModel</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatterySoc">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatterySoc</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_12vLeadAcidBattery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_BatterySoc" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">12vLeadAcidBattery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CannotServeContinuously">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CannotServeContinuously</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Battery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_CannotServeContinuously" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Battery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Recharge">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Recharge</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Battery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_Recharge" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Battery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ElectricalLoads">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ElectricalLoads</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Power">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_ElectricalLoads" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Power</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Systems">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Systems</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Power">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_Systems" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Power</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MobileChargers">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MobileChargers</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Power">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_MobileChargers" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Power</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ElectricalAndElectronicAccessories">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ElectricalAndElectronicAccessories</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Power">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_ElectricalAndElectronicAccessories" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Power</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Battery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Battery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_System">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_Battery" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">System</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SupplyToElectricalComponentsInCar">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SupplyToElectricalComponentsInCar</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_System">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_SupplyToElectricalComponentsInCar" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">System</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveAlternator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveAlternator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_System">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_AutomotiveAlternator" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">System</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Engine">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Engine</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveAlternator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_Engine" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveAlternator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FullBridgeRectifier">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FullBridgeRectifier</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveAlternator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_FullBridgeRectifier" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveAlternator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FlexibleThin-filmSolarPvModule">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FlexibleThin-filmSolarPvModule</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ProposedModel">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_FlexibleThin-filmSolarPvModule" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ProposedModel</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RechargeCarBattery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RechargeCarBattery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FlexibleThin-filmSolarPvModule">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_RechargeCarBattery" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FlexibleThin-filmSolarPvModule</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ProvidesEnergy">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Benefit" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ProvidesEnergy</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MaximumPowerPointChargeController">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_ProvidesEnergy" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MaximumPowerPointChargeController</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_PowerVersusVoltageCharacteristics">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">PowerVersusVoltageCharacteristics</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Mppt">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_PowerVersusVoltageCharacteristics" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Mppt</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SolarPanelAndBattery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SolarPanelAndBattery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DcElectricity">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_SolarPanelAndBattery" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DcElectricity</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MaximumPowerToLoad">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MaximumPowerToLoad</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SolarPanel">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_MaximumPowerToLoad" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SolarPanel</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MaximumPower">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MaximumPower</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Mppt">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_MaximumPower" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Mppt</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MaximumPowerToLoad">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MaximumPowerToLoad</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Mppt">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_MaximumPowerToLoad" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Mppt</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SolarPvModule">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SolarPvModule</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MaximumPower">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_SolarPvModule" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MaximumPower</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_PurposeOfMaximumPower">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">PurposeOfMaximumPower</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BuckConverter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#fulfills" />
+        <ns1:someValuesFrom rdf:resource="#_PurposeOfMaximumPower" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BuckConverter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SolarPvModuleToLoad">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SolarPvModuleToLoad</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BuckConverter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_SolarPvModuleToLoad" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BuckConverter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Systems">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Systems</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Mppt">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_Systems" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Mppt</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BuckConverterConfiguration">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BuckConverterConfiguration</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DcdcConverter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_BuckConverterConfiguration" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DcdcConverter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_QuestionsAboutPerformanceAndDependability">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Need" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">QuestionsAboutPerformanceAndDependability</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_LeadAcidBattery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_QuestionsAboutPerformanceAndDependability" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">LeadAcidBattery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MaximumPowerToLoad">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MaximumPowerToLoad</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_HybridEnergySystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_MaximumPowerToLoad" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">HybridEnergySystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelConsumption">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelConsumption</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Goal">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Need" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_FuelConsumption" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Goal</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MaximumPowerToLoad">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MaximumPowerToLoad</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Engine">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_MaximumPowerToLoad" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Engine</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_HybridOperation">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">HybridOperation</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_PvArray">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_HybridOperation" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">PvArray</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_OverallEfficiency">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Benefit" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">OverallEfficiency</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AesSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_OverallEfficiency" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AesSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ElectronicControlUnits">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ElectronicControlUnits</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ModernAutomobile">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_ElectronicControlUnits" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ModernAutomobile</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ControllerAreaNetworkBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ControllerAreaNetworkBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ElectronicControlUnits">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_ControllerAreaNetworkBus" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ElectronicControlUnits</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DeFactoIn-vehicleBusStandard">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DeFactoIn-vehicleBusStandard</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_DeFactoIn-vehicleBusStandard" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Real-timeCommunication">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Real-timeCommunication</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#fulfills" />
+        <ns1:someValuesFrom rdf:resource="#_Real-timeCommunication" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Cyber-securityVulnerabilities">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_CanBus" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Cyber-securityVulnerabilities</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MoreDependentOnInternet">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Need" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MoreDependentOnInternet</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_IntelligentAutomobiles">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_MoreDependentOnInternet" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">IntelligentAutomobiles</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AttackInterfaces">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Disruption" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AttackInterfaces</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Internet">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_AttackInterfaces" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Internet</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_In-vehicleNetworks">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">In-vehicleNetworks</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AttackInterfaces">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Disruption" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_In-vehicleNetworks" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AttackInterfaces</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MethodsForCanBusSecurityTest">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MethodsForCanBusSecurityTest</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Researchers">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovator" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_MethodsForCanBusSecurityTest" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Researchers</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SecurityIssuesInAutomobiles">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityIssuesInAutomobiles</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MethodsForCanBusSecurityTest">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_SecurityIssuesInAutomobiles" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MethodsForCanBusSecurityTest</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Cyber-securityVulnerabilities">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Cyber-securityVulnerabilities</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Penetration">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_Cyber-securityVulnerabilities" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Penetration</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RandomFuzzyData">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Disruption" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RandomFuzzyData</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyDataGenerationAlgorithm">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_RandomFuzzyData" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyDataGenerationAlgorithm</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DataExplosion">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Disruption" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DataExplosion</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RandomFuzzyData">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Disruption" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_DataExplosion" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RandomFuzzyData</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CommunicationMatrix">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CommunicationMatrix</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyDataGenerationAlgorithm">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_CommunicationMatrix" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyDataGenerationAlgorithm</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SlightAnomaliesOfCanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SlightAnomaliesOfCanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Monitor">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_SlightAnomaliesOfCanBus" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Monitor</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AccessLogs">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AccessLogs</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AnomalyProgram">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_AccessLogs" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AnomalyProgram</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Cyber-securityVulnerabilities">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Cyber-securityVulnerabilities</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzMethod">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_Cyber-securityVulnerabilities" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzMethod</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyDataGenerationAlgorithm">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyDataGenerationAlgorithm</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BitFlipRate">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_FuzzyDataGenerationAlgorithm" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BitFlipRate</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyDataGenerationAlgorithm">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyDataGenerationAlgorithm</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_GenerativeAdversarialNetwork">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_FuzzyDataGenerationAlgorithm" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">GenerativeAdversarialNetwork</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_LargeBandwidth">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Benefit" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">LargeBandwidth</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_LargeBandwidth" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Anti-interference">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Benefit" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Anti-interference</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_Anti-interference" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Real-timeCommunication">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Real-timeCommunication</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_Real-timeCommunication" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_In-vehicleNetworks">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">In-vehicleNetworks</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_In-vehicleNetworks" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_StartOfDataFrame">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">StartOfDataFrame</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_StartOfDataFrame">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_StartOfDataFrame" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">StartOfDataFrame</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SignalOfVehicle">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SignalOfVehicle</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FixedValues">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_SignalOfVehicle" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FixedValues</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_MoreEnergyAndTime">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Benefit" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">MoreEnergyAndTime</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Penetration">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_MoreEnergyAndTime" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Penetration</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DiscoverVulnerabilities">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DiscoverVulnerabilities</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomatedSecurityTest">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_DiscoverVulnerabilities" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomatedSecurityTest</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DiscoverVulnerabilities">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DiscoverVulnerabilities</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzTool">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_DiscoverVulnerabilities" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzTool</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_TwoCoreModules">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">TwoCoreModules</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzFramework">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_TwoCoreModules" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzFramework</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyDataFromGenerator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyDataFromGenerator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzFramework">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_FuzzyDataFromGenerator" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzFramework</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AnomalyMonitor">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AnomalyMonitor</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzFramework">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_AnomalyMonitor" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzFramework</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_TooLargeToBeEnumerated">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">TooLargeToBeEnumerated</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_InputSpaceOfObject">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_TooLargeToBeEnumerated" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">InputSpaceOfObject</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_NeedToAvoidInputExplosion">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Need" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">NeedToAvoidInputExplosion</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyDataGenerationAlgorithm">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#fulfills" />
+        <ns1:someValuesFrom rdf:resource="#_NeedToAvoidInputExplosion" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyDataGenerationAlgorithm</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_SecurityPolicy">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityPolicy</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AnomalyMonitor">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_SecurityPolicy" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AnomalyMonitor</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AbnormalBehavior">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Symptom" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AbnormalBehavior</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AnomalyMonitor">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_AbnormalBehavior" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AnomalyMonitor</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_TestedCanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">TestedCanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AbnormalBehavior">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Symptom" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasSymptom" />
+        <ns1:someValuesFrom rdf:resource="#_TestedCanBus" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AbnormalBehavior</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DataExplosion">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Disruption" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DataExplosion</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RandomMutationStrategy">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_DataExplosion" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RandomMutationStrategy</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BfrOfBits">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BfrOfBits</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_VehicularIds">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_BfrOfBits" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">VehicularIds</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RandomNoiseAsInput">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RandomNoiseAsInput</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Generator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_RandomNoiseAsInput" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Generator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RealData">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RealData</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Discriminator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovator" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_RealData" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Discriminator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyDataFromGenerator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyDataFromGenerator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Discriminator">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovator" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_FuzzyDataFromGenerator" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Discriminator</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ProblemsAbove">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ProblemsAbove</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ModelNonconvergence">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_ProblemsAbove" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ModelNonconvergence</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_GradientPenalty">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">GradientPenalty</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Wgan-gp">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_GradientPenalty" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Wgan-gp</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RemovedWeightConstraint">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Improvement" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RemovedWeightConstraint</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Wgan-gp">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_RemovedWeightConstraint" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Wgan-gp</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AccelerateProcess">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Improvement" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AccelerateProcess</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Wgan-gp">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_AccelerateProcess" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Wgan-gp</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_OptimizeObjectiveFunction">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Improvement" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">OptimizeObjectiveFunction</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_StochasticGradientDescentMethod">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_OptimizeObjectiveFunction" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">StochasticGradientDescentMethod</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_GenerateDataset">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">GenerateDataset</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanMessages">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_GenerateDataset" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanMessages</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Method">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Method</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Adaptive(adaboost)">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_Method" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Adaptive(adaboost)</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_StrongClassifier">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">StrongClassifier</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Adaptive(adaboost)">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_StrongClassifier" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Adaptive(adaboost)</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Step3-3">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Step3-3</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AdaboostBasedClassifier">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDevelopmentStage" />
+        <ns1:someValuesFrom rdf:resource="#_Step3-3" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AdaboostBasedClassifier</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_NormalCanMessages">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">NormalCanMessages</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AdaboostBasedClassifier">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_NormalCanMessages" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AdaboostBasedClassifier</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuzzyAbnormalCanMessages">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Symptom" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuzzyAbnormalCanMessages</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AdaboostBasedClassifier">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_FuzzyAbnormalCanMessages" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AdaboostBasedClassifier</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_CanBus">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">CanBus</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Vulnerabilities">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_CanBus" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Vulnerabilities</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelCosts">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelCosts</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveElectricalSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_FuelCosts" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveElectricalSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ThisProblem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ThisProblem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelCosts">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_ThisProblem" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelCosts</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryProtection">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryProtection</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryManagementScheme">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_BatteryProtection" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryManagementScheme</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Systems">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Systems</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Mppt">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_Systems" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Mppt</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BuckConverterConfiguration">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BuckConverterConfiguration</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_DcdcConverter">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#embodiedBy" />
+        <ns1:someValuesFrom rdf:resource="#_BuckConverterConfiguration" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">DcdcConverter</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveIndustry">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveIndustry</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_IncreaseInElectricalAndElectronicAccessories">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_AutomotiveIndustry" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">IncreaseInElectricalAndElectronicAccessories</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveIndustry">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveIndustry</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelPricesAndEnvironmentalConcerns">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_AutomotiveIndustry" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelPricesAndEnvironmentalConcerns</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_OverallEfficiency">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Benefit" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">OverallEfficiency</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AesSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_OverallEfficiency" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AesSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ThisProblem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ThisProblem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveElectricalSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_ThisProblem" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveElectricalSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelCosts">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelCosts</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AutomotiveElectricalSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Embodiment" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasBenefit" />
+        <ns1:someValuesFrom rdf:resource="#_FuelCosts" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AutomotiveElectricalSystem</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Problems">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Problem" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Problems</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#solves" />
+        <ns1:someValuesFrom rdf:resource="#_Problems" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FuelConsumption">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FuelConsumption</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Project">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#DevelopmentStage" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_FuelConsumption" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Project</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryProtection">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryProtection</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_BatteryManagementScheme">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_BatteryProtection" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">BatteryManagementScheme</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_Parameters">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">Parameters</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_EngineAveragedModel">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_Parameters" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">EngineAveragedModel</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FlexibleThin-filmSolarPvModule">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FlexibleThin-filmSolarPvModule</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_ProposedModel">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasDeveloped" />
+        <ns1:someValuesFrom rdf:resource="#_FlexibleThin-filmSolarPvModule" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">ProposedModel</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_RechargeCarBattery">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Usage" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">RechargeCarBattery</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_FlexibleThin-filmSolarPvModule">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasUsage" />
+        <ns1:someValuesFrom rdf:resource="#_RechargeCarBattery" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">FlexibleThin-filmSolarPvModule</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_OverallEfficiency">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Benefit" />
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">OverallEfficiency</ns3:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="#_AesSystem">
+    <ns3:subClassOf rdf:resource="http://purl.org/innovation/ns#Innovation" />
+    <ns3:subClassOf>
+      <ns1:Restriction>
+        <ns1:onProperty rdf:resource="#hasImprovement" />
+        <ns1:someValuesFrom rdf:resource="#_OverallEfficiency" />
+      </ns1:Restriction>
+    </ns3:subClassOf>
+    <ns3:label ns6:datatype="http://www.w3.org/2001/XMLSchema#string">AesSystem</ns3:label>
+  </ns1:Class>
+</rdf:RDF>

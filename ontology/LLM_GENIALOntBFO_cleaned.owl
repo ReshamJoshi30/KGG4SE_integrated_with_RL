@@ -1,0 +1,3081 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://w3id.org/gbo/mgg"
+         xmlns="http://w3id.org/gbo/mgg#"
+         xmlns:x_1.1="http://purl.org/dc/elements/1.1/"
+         xmlns:term="http://purl.org/dc/terms/"
+         xmlns:vann="http://purl.org/vocab/vann/"
+         xmlns:x_0.1="http://xmlns.com/foaf/0.1/"
+         xmlns:obo="http://purl.obolibrary.org/obo/">
+
+<owl:Ontology rdf:about="http://w3id.org/gbo/mgg">
+  <owl:versionIRI rdf:resource="http://w3id.org/gbo/0.2.3"/>
+  <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/2.0/bfo.owl"/>
+  <x_1.1:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Basic Ontology with general vocabulary for serving as a ground to execute basic tasks of the tool AGILA and share common upper level for all classes in GENIAL!. It supports the modelling of microlectronic components like sensors, acutators, processors and software along the automotive value chain.</x_1.1:description>
+  <x_1.1:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://creativecommons.org/licenses/by/4.0/</x_1.1:license>
+  <x_1.1:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GENIAL! Basic Ontology</x_1.1:title>
+  <term:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christoph Grimm</term:contributor>
+  <term:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Peter Neumann</term:contributor>
+  <term:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2021-01-26</term:created>
+  <term:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frank Wawrzik</term:creator>
+  <term:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GENIAL! Basic Ontology</term:title>
+  <vann:preferredNamespacePrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gbo-bfo</vann:preferredNamespacePrefix>
+  <vann:preferredNamespaceUri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://w3id.org/gbo</vann:preferredNamespaceUri>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GENIAL! Basic Ontology</rdfs:label>
+  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.2.3</owl:versionInfo>
+  <x_0.1:homepage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://cps.cs.uni-kl.de/mitarbeiter/frank-wawrzik-msc</x_0.1:homepage>
+  <x_0.1:mbox xml:lang="en">mailto:wawrzik</x_0.1:mbox>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#comprised_of">
+  <owl:equivalentProperty rdf:resource="http://w3id.org/gbo#has_part_directly"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#has_part_directly">
+  <rdfs:subPropertyOf rdf:resource="http://w3id.org/gbo#has_part"/>
+  <owl:inverseOf rdf:resource="http://w3id.org/gbo#part_of_directly"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">models hierarchical de-composition/integration of direct parts</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#depends_on">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdfs:domain rdf:resource="http://w3id.org/gbo#property"/>
+  <rdfs:range rdf:resource="http://w3id.org/gbo#dependency"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Links properties with dependencies.</obo:IAO_0000115>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#executes">
+  <owl:inverseOf rdf:resource="http://w3id.org/gbo#is_executed_by"/>
+  <rdfs:domain rdf:resource="http://w3id.org/gbo/CarModel/processing_element"/>
+  <rdfs:range rdf:resource="http://w3id.org/gbo#software_element"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Relates a processing unit to the software which runs on it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#is_executed_by">
+  <rdfs:domain rdf:resource="http://w3id.org/gbo#software_element"/>
+  <rdfs:range rdf:resource="http://w3id.org/gbo/CarModel/processing_element"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Relates the software to the processing unit on which it runs</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#has_part">
+  <owl:inverseOf rdf:resource="http://w3id.org/gbo#part_of"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">models hierarchical de-composition/integration</obo:IAO_0000115>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#part_of">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">models hierarchical de-composition/integration</obo:IAO_0000115>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#part_of_directly">
+  <rdfs:subPropertyOf rdf:resource="http://w3id.org/gbo#part_of"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#has_property">
+  <owl:inverseOf rdf:resource="http://w3id.org/gbo#property_of"/>
+  <rdfs:domain rdf:resource="http://w3id.org/gbo#element"/>
+  <rdfs:range rdf:resource="http://w3id.org/gbo#property"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">links elements to their properties</obo:IAO_0000115>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#property_of">
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">links properties back to their components</obo:IAO_0000115>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#implements">
+  <owl:inverseOf rdf:resource="http://w3id.org/gbo#is_implemented_by"/>
+  <rdfs:domain rdf:resource="http://w3id.org/gbo#element"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Links elements their functions</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://w3id.org/gbo#is_implemented_by">
+  <rdfs:domain rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:range rdf:resource="http://w3id.org/gbo#element"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Links functions to their elements</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit">
+  <rdfs:domain rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <rdfs:range rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Links measure with their unit</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has unit</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasValue">
+  <rdfs:domain rdf:resource="http://w3id.org/gbo#property"/>
+  <rdfs:range rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Links properties or quantities to their measure (concrete value)</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has value</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="http://w3id.org/gbo/hasLowerBoundNumericalValue"/>
+
+<owl:DatatypeProperty rdf:about="http://w3id.org/gbo/hasUpperBoundNumericalValue"/>
+
+<owl:DatatypeProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue">
+  <rdfs:domain rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+</owl:DatatypeProperty>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+
+<owl:AnnotationProperty rdf:about="http://w3id.org/gbo/CarModel/atTime">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">e.g. law_for_banning_combustion_engines bans combustion engine atTime 2030-10-26T21:32:52 (xsd:DateTime)</obo:IAO_0000112>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">used to annotate triples</rdfs:comment>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://w3id.org/gbo/CarModel/hasAPPELFormula"/>
+
+<owl:Class rdf:about="http://w3id.org/gbo#property">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">drag coefficient</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">temperature</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A quality or characteristic of an element, hardware, software or function. A property has a boolean, integer, or real variable through the measure class. Specifically properties can be unquantified and quantified. But quantified properties are quantities.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#dependency">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#property"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A gbo:property that is a boolean or arithmetic function / equation on properties. Used to be calculated with GENIAL constraint propagation. As string in LaTex syntax.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dependency</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/CarModel/processing_element">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#implements"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/processing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(according to ISO26262) hardware part (3.71) providing a set of functions for data processing, normally consisting of a register set, an execution unit, and a control unit</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">processing element</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">processing unit</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">processor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#software_element">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#non_system_level_element"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#is_executed_by"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/CarModel/processing_element"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">From definition of element:
+Note 1 to entry: When “software element” or “hardware element” is used, this phrase denotes an element of software only or an element of hardware only, respectively.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">software</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">software element</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#element">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+  <owl:disjointWith>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <rdf:Description rdf:about="http://w3id.org/gbo#context"/>
+      </owl:unionOf>
+    </owl:Class>
+  </owl:disjointWith>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Continuant that is (according to ISO 26262) a system (3.163), components (3.21) (hardware or software), hardware parts (3.71), or software units (3.159)</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#function">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000034"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A bfo:function that an element (e.g. system, component, hardware or software) implements.</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/measure">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A bfo:quality that are amounts of quantities.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">measure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/unit">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A quality that is any standard used for comparison in measurements.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#component">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#non_system_level_element"/>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+                  <owl:someValuesFrom rdf:resource="http://w3id.org/gbo#hardware_part"/>
+                </owl:Restriction>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+                  <owl:onClass rdf:resource="http://w3id.org/gbo#hardware_part"/>
+                  <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                </owl:Restriction>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:unionOf rdf:parseType="Collection">
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+                  <owl:someValuesFrom rdf:resource="http://w3id.org/gbo#software_component"/>
+                </owl:Restriction>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+                  <owl:someValuesFrom rdf:resource="http://w3id.org/gbo#software_unit"/>
+                </owl:Restriction>
+              </owl:unionOf>
+            </owl:Class>
+          </owl:unionOf>
+        </owl:Class>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly"/>
+          <owl:someValuesFrom rdf:resource="http://w3id.org/gbo#system"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A microcontroller</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">According to ISO26262: non-system level element (3.41) that is logically or technically separable and is comprised of more than one hardware part (3.71) or one or more software units (3.159). 
+
+A component is a part of a system (3.163).</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#hardware_part">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly"/>
+          <owl:allValuesFrom rdf:resource="http://w3id.org/gbo#component"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The CPU of a microcontroller, a resistor, flash array of a microcontroller.</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A piece of hardware that is (according to ISO 26262) a portion of a hardware component (3.21) at the first level of hierarchical decomposition.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hardware part</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#software_component">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#software_element"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+          <owl:someValuesFrom rdf:resource="http://w3id.org/gbo#software_unit"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+          <owl:allValuesFrom rdf:resource="http://w3id.org/gbo#software_unit"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+          <owl:onClass rdf:resource="http://w3id.org/gbo#software_unit"/>
+          <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">one or more softwareunits (3.159)</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">software component</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#software_unit">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#software_element"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+          <owl:allValuesFrom rdf:resource="http://w3id.org/gbo#software_element"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+          <owl:onClass rdf:resource="http://w3id.org/gbo#software_element"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a piece of software that is (according to ISO26262) an atomic level software component (3.157) of the software architecture (3.1) that can be subjected to stand-alone testing (3.169)</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">software unit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#system">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#system_level_element"/>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+              <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/actuator"/>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+              <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/controller"/>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+              <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/sensor"/>
+            </owl:Restriction>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">System level element that is according to ISO 26262: set of components (3.21) or subsystems that relates at least a sensor, a controller and an actuator with one another.
+
+Note 1 to entry: The related sensor or actuator can be included in the system, or can be external to the system.</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#non_system_level_element">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#element"/>
+  <owl:disjointWith rdf:resource="http://w3id.org/gbo#system_level_element"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An element that is not on the system-level</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">non system level element</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#context">
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The circumstances that form the setting for an event, statement or idea and in terms of which it can be fully understood, e.g. Market, legal  frame conditions</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#engineered_object">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An object created, designed or engineered by humans.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engineered object</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#hardware_component">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+          <owl:allValuesFrom rdf:resource="http://w3id.org/gbo#hardware_part"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#comprised_of"/>
+          <owl:onClass rdf:resource="http://w3id.org/gbo#hardware_part"/>
+          <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <owl:disjointWith rdf:resource="http://w3id.org/gbo#software_component"/>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">actuator</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multi core</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sensor</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No ISO definition. Formal Definition derived from other definitions.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hardware component</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#hardware_element">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_component"/>
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_elementary_subpart"/>
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_part"/>
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart"/>
+      </owl:unionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#engineered_object"/>
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#non_system_level_element"/>
+  <owl:disjointWith rdf:resource="http://w3id.org/gbo#software_element"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">From definition of element:
+Note 1 to entry: When “software element” or “hardware element” is used, this phrase denotes an element of software only or an element of hardware only, respectively.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hardware</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hardware element</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#hardware_elementary_subpart">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly"/>
+          <owl:allValuesFrom rdf:resource="http://w3id.org/gbo#hardware_subpart"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:disjointWith rdf:resource="http://w3id.org/gbo/actuating"/>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A flip-flop of the ALU with its logic cone, a register.</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">smallest portion of a hardware subpart (3.73) considered in safety (3.132) analysis</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hardware elementary subpart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#hardware_subpart">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://w3id.org/gbo#hardware_element"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#has_part_directly"/>
+          <owl:allValuesFrom>
+            <owl:Class>
+              <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://w3id.org/gbo#hardware_elementary_subpart"/>
+                <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart"/>
+              </owl:unionOf>
+            </owl:Class>
+          </owl:allValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#part_of_directly"/>
+          <owl:allValuesFrom>
+            <owl:Class>
+              <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://w3id.org/gbo#hardware_part"/>
+                <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart"/>
+              </owl:unionOf>
+            </owl:Class>
+          </owl:allValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ALU of a CPU of a microcontroller</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">register bank of a CPU</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Portion of a hardware part (3.71) that can be logically divided and represents second or greater level of hierarchical decomposition.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hardware subpart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/actuating">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A gbo:function to change or control an object</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#legal_boundary_condition">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#context"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">legal boundary conditon</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#market">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#context"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">market</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#material_object">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">material object</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#system_level_element">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#element"/>
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#engineered_object"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An element that is on the system level</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">system level element</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo#social_object">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000027"/>
+        <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000030"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">organisation</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An object or object aggregate that stands in a social role.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">social object</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/actuator">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Actuator"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#implements"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/actuating"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An actuator is a hardware component that implements some actuating function and is responsible for moving or controlling a mechanism or system.</obo:IAO_0000115>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not defined in ISO26262</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/controller">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/CarModel/processing_element"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/sensor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#implements"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/sensing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">accelerometer</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">humidity sensor</obo:IAO_0000112>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">radar</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hardware component that implements some sensing function.</obo:IAO_0000115>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not defined in ISO26262</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.w3.org/ns/sosa/Actuator"/>
+
+<owl:Class rdf:about="http://w3id.org/gbo/automatic_cruise_control">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo/vehicle_function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/camera"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/electronic_control_unit"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/lidar"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by"/>
+      <owl:someValuesFrom rdf:resource="http://w3id.org/gbo/radar"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by"/>
+      <owl:onClass rdf:resource="http://w3id.org/gbo/electronic_control_unit"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#is_implemented_by"/>
+      <owl:onClass rdf:resource="http://w3id.org/gbo/sensor"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An “automatic cruise control” is a vehicle function that can be implemented, using different ECUs and a variety of sensor technology (e.g. Radar, Lidar, Camera).</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">automatic cruise control</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/vehicle_function">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An “automatic cruise control” is a vehicle function that can be implemented, using different ECUs and a variety of sensor technology (e.g. Radar, Lidar, Camera).</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A gbo:function that is (according to ISO26262) behaviour of the vehicle, intended by the implementation of one or more items (3.84), that is observable by the customer.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vehicle function</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/camera">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo/sensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/electronic_control_unit">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ECU</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">electronic control unit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/lidar">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo/sensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/radar">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo/sensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/embedded_software">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#software_element"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a software that is (according to ISO 26262) fully-integrated software to be executed on a processing element (3.113)</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">embedded software</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/functional_requirement">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo/requirement"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A requirement that specifies something the system should do.</obo:IAO_0000115>
+  <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/</obo:IAO_0000119>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/requirement">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#property"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A property that is wanted or needed.</obo:IAO_0000115>
+  <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.merriam-webster.com/dictionary/requirement</obo:IAO_0000119>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/item">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://w3id.org/gbo#system"/>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="http://w3id.org/gbo#has_part"/>
+              <owl:someValuesFrom rdf:resource="http://w3id.org/gbo#system"/>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="http://w3id.org/gbo#part_of"/>
+              <owl:someValuesFrom rdf:resource="http://w3id.org/gbo#system"/>
+            </owl:Restriction>
+          </owl:unionOf>
+        </owl:Class>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://w3id.org/gbo#implements"/>
+          <owl:allValuesFrom rdf:resource="http://w3id.org/gbo/vehicle_function"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system_level_element"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">System level element that is (according to ISO26262) system (3.163) or combination of systems (3.163), to which ISO 26262 is applied, that implements a function or part of a function at the vehicle level.
+
+Note 1 to entry: See vehicle function (3.178).</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/non_functional_requirement">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo/requirement"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A requirement that describes how the system works.</obo:IAO_0000115>
+  <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/</obo:IAO_0000119>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/operating_time">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://w3id.org/gbo#property_of"/>
+      <owl:someValuesFrom>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://w3id.org/gbo#element"/>
+            <rdf:Description rdf:about="http://w3id.org/gbo/item"/>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A quantity that is (according to ISO 26262) a cumulative time that an item (3.84) or element (3.41) is functioning, including degraded modes.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operating time</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#property"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A quantity is a (property that is quanitifiable and a) representation of a quantifiable (standardised) aspect (such as length, mass, and time) of a phenomenon (e.g., a star, a molecule, or a food product). Quantities are classified according to similarity in their (implicit) metrological aspect, e.g. the length of my table and the length of my chair are both classified as length.</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/performance">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#property"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a gbo:property on how well a person, machine, etc. does a piece of work or an activity</obo:IAO_0000115>
+  <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://dictionary.cambridge.org/dictionary/english/performance</obo:IAO_0000119>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/processing">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A gbo:function to calculate a set of instructions or software</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://w3id.org/gbo/sensing">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A gbo:function to perceive an object</obo:IAO_0000115>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.w3.org/ns/sosa/Sensor"/>
+
+<owl:Class rdf:about="http://w3id.org/gbo/CarModel/mechanical_object">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#engineered_object"/>
+  <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vehicle</obo:IAO_0000112>
+  <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An engineered object that has mechanical characteristics. They can be either dominant mechanical characteristics like in a vehicle or wheel or less dominant like in a battery.</obo:IAO_0000115>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mechanical object</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_costs">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_costs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_automotive_electrical_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_costs"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_overview"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_major_power-related_elements"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_various_devices"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_electrical_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_overview">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#other"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">overview</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_major_power-related_elements">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">major_power-related_elements</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_extra_battery_bank">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_array"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_generated_for_solar"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">extra_battery_bank</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_project">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_extra_battery_bank"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">project</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_array">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mppt"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mppt">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_versus_voltage_characteristics"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_extracting_maximum_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_pv_module"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dcdc_converter"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mppt</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_generated_for_solar">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_reducing_fuel_consumption"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power_generated_for_solar</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_reducing_fuel_consumption">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">reducing_fuel_consumption</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery_protection">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">battery_protection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery_management_scheme">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery_protection"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">battery_management_scheme</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_various_devices">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">various_devices</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_parameters">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car_tire_diameter"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_speed"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_component">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_parameters"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_teeth_of_the_flywheel"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_location"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">component</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternator_model">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alternator_model</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_aes">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#software"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternator_model"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_lead-acid_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_array"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mppt"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dc-dc_converters"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aes</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_12v_lead_acid_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_rating"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_rotation"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_crank_the_engine"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_lead-acid_battery">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lead-acid_battery</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dc-dc_converters">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dc-dc_converters</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_rotor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternator_pulley"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternating_magnetic_field"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rotor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_the_two_components">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_rotor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the_two_components</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stator</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternator_pulley">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alternator_pulley</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator_windings">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stator_windings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_iron_core">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">iron_core</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_iron_shaft">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">iron_shaft</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_coil_windings">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_iron_shaft"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">coil_windings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_placement_of_coil_windings">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">placement_of_coil_windings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_120-degree_intervals">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_placement_of_coil_windings"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">120-degree_intervals</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternating_magnetic_field">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alternating_magnetic_field</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternating_current">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alternating_current</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_set_of_diodes">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator_leads"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">set_of_diodes</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_ac_current">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_set_of_diodes"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ac_current</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator_leads">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stator_leads</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator_lead">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stator_lead</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_diodes">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stator_lead"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stop_and_direct_the_flow_of_current"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_one-way_valve"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diodes</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_manage">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">manage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_current">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_manage"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_inductor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">current</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_stop_and_direct_the_flow_of_current">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stop_and_direct_the_flow_of_current</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dc_electricity">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dc_electricity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_batteries">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dc_electricity"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">batteries</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_one-way_valve">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">one-way_valve</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dc_motor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dc_motor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dc_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_device"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">starter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_device">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#executes"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_internal_combustion_engines"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_device</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_internal_combustion_engines">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">internal_combustion_engines</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_12v_lead_acid_battery">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_current"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_huge_amount_for_current"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12v_lead_acid_battery</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_combustion_process"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_cranking"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_consumed"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_combustion_process">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">combustion_process</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor_gear">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_component"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor_gear</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_teeth_of_the_flywheel">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">teeth_of_the_flywheel</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_location">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine's_gearbox_housing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">location</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine's_gearbox_housing">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engine's_gearbox_housing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_rating">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_5kw"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power_rating</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_5kw">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_unit"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_kw"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5kw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_kw">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_series_resistor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">series_resistor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_series_resistor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_constant_voltage_source"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_charge_capacity"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_no_dynamics"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_no_self-discharge"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_no_aging"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_requirements"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_charge"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">battery</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_constant_voltage_source">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">constant_voltage_source</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_infinite">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">infinite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery_charge_capacity">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_infinite"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">battery_charge_capacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_block">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">block</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_charge_capacity">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_finite"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">charge_capacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_finite">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">finite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_no_dynamics">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">no_dynamics</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_no_self-discharge">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">no_self-discharge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_no_aging">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">no_aging</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_voltage">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">voltage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mathematical_equations">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_voltage"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_current"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mathematical_equations</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_array_modelling">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pv_array_modelling</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_matlab/simulink">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#software"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_array_modelling"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matlab/simulink</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_factors_of_series_and_parallel_no_of_cells">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">factors_of_series_and_parallel_no_of_cells</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_cell_modelling_equations">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_factors_of_series_and_parallel_no_of_cells"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solar_cell_modelling_equations</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_cells">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solar_cells</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_array">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#software"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_cells"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">array</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_cell">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_array"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pv_cell</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_single-diode_electrical_equivalent_circuit">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_cell"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">single-diode_electrical_equivalent_circuit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_diode">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_current_source">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_diode"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_parallel"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">current_source</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_resistance">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_series"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">resistance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_shunt_resistance">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_resistance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">shunt_resistance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_parallel">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parallel</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_series">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">series</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_electronic_circuit">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_buck_converter"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power_electronic_circuit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_buck_converter">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_electronic_circuit"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_transfer"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_interface"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_output_load">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">output_load</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_input_dc_voltage">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_output_load"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">input_dc_voltage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_average_output_voltage">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_buck_converter"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">average_output_voltage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_smaller">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">smaller</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_source_voltage">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_smaller"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">source_voltage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fig6">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#other"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fig6</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_buck_converter_circuit">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fig6"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter_circuit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_working_principle">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_condition_of_the_switch"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">working_principle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_circuit">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_working_principle"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_operating_modes"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">circuit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_condition_of_the_switch">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">condition_of_the_switch</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_two_states">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_closed_(on)"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_open_(off)"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">two_states</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_switch">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_two_states"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_electronic_component"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">switch</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_closed_(on)">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">closed_(on)</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_open_(off)">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">open_(off)</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_electronic_component">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mosfets"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power_electronic_component</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mosfets">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mosfets</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_continuous">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">continuous</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_operating_mode_buck_converter">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_continuous"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_discontinuous"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operating_mode_buck_converter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_discontinuous">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#other"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">discontinuous</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_operating_modes">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_current"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operating_modes</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_inductor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">inductor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_zero">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">zero</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_inductor_current">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_zero"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_continuous_mode"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_discontinuous_mode"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">inductor_current</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_continuous_mode">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">continuous_mode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_discontinuous_mode">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">discontinuous_mode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine_averaged_model">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_parameters"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engine_averaged_model</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car_tire_diameter">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">car_tire_diameter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_speed">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">speed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine_subsystem">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engine_subsystem</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_clutch">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_plunger"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">clutch</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starting_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_clutch"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_solenoid"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pinion"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_huge_current"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">starting_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_solenoid">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">starter_solenoid</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pinion">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_plunger">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plunger</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor_shaft">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_part"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine_crank_shaft"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">starter_motor_shaft</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pinion_gear_flywheel">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor_shaft"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pinion_gear_flywheel</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine_crank_shaft">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engine_crank_shaft</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_supply_from_the_battery">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">supply_from_the_battery</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solenoid_coils">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_supply_from_the_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_switch_to_the_starter_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_current"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solenoid_coils</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_switch_to_the_starter_motor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">switch_to_the_starter_motor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_rotation">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rotation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_cranking">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cranking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_crank_the_engine">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">crank_the_engine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_huge_current">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">huge_current</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_huge_amount_for_current">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">huge_amount_for_current</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery_soc">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_12v_lead_acid_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">battery_soc</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_requirements">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_requirements</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_charge">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">charge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">car</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_lighting_systems">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lighting_systems</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mobile_chargers">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mobile_chargers</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_and_electronic_accessories">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_and_electronic_accessories</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_charging">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">charging</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_charging_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_charging"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_components"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_automotive_alternator"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">charging_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_components">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">electrical_components</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_automotive_alternator">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_full_bridge_rectifier"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_alternator</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_full_bridge_rectifier">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_convert_supply_from_alternator_from_ac_to_dc"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">full_bridge_rectifier</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_convert_supply_from_alternator_from_ac_to_dc">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">convert_supply_from_alternator_from_ac_to_dc</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dc_supply">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_self_excitation"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dc_supply</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_self_excitation">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_field_winding"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self_excitation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_field_winding">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">field_winding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_output">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_limits"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">output</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_alternator">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_output"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car's_electrical_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery_charging"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alternator</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_field_voltage_regulator">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_circuit"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">field_voltage_regulator</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_limits">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">limits</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_field_voltage">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_limits"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">field_voltage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_flexible_thin-film_solar_pv_module">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power_point_tracking_charge_controller"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">flexible_thin-film_solar_pv_module</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_proposed_model">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_flexible_thin-film_solar_pv_module"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proposed_model</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power_point_tracking_charge_controller">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_energy"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power_point_tracking_charge_controller</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_energy">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_recharge"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">energy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_recharge">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recharge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car_battery">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">car_battery</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_versus_voltage_characteristics">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power_versus_voltage_characteristics</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_panel">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_voltage"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solar_panel</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mppt_dc-dc_converter">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_panel"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mppt_dc-dc_converter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_car's_electrical_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">car's_electrical_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery_charging">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">battery_charging</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_consumption_display_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumption_display_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_simulink_model">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#software"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_consumption_display_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">simulink_model</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_automotive">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#other"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_starter_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solenoid"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_ignition_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_lighting_systems"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_pump_motor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_indication"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_bms"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">automotive</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solenoid">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solenoid</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_ignition_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ignition_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_pump_motor">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_equivalent_resistance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_pump_motor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_equivalent_resistance">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">equivalent_resistance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_hybrid_energy_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_array"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_constant_irradiance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_variable_irradiance_values"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery-rooftop_pv_array"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_supply_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_aes"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_constant_irradiance">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">constant_irradiance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_variable_irradiance_values">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">variable_irradiance_values</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_indication">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_indication</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_bms">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bms</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_extracting_maximum_power">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">extracting_maximum_power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_pv_module">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_buck_converter"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solar_pv_module</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_load"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">maximum_power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_load">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">load</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_transfer">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power_transfer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_interface">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_module"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interface</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_module">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">module</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_load_impedance">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_source"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">load_impedance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_duty_cycle">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_load_impedance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">duty_cycle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_source">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">source</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_peak_power">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak_power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_mppt_technique">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#implements"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximum_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mppt_technique</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_pv_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pv_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dcdc_converter">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_photovoltaic_systems"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dcdc_converter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_photovoltaic_systems">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_photovoltaic_array_output_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_buck_converter_configuration"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic_systems</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_photovoltaic_array_output_power">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximize"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic_array_output_power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_maximize">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">maximize</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_buck_converter_configuration">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">buck_converter_configuration</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_automotive_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_part_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_electrical_and_electronic_accessories"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_prices"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_environmental_concerns"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">automotive_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_prices">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_prices</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_environmental_concerns">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">environmental_concerns</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_energy_supply">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">energy_supply</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_lead_acid_battery">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#hardware_component"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_energy_supply"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_performance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dependability"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lead_acid_battery</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_performance">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">performance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_dependability">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dependability</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_battery-rooftop_pv_array">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">battery-rooftop_pv_array</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_supply_power">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">supply_power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_consumed">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_hybrid_operation">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_supply_to_the_automotive_loads"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_operation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_rooftop_pv_array">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_hybrid_operation"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rooftop_pv_array</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_supply_to_the_automotive_loads">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">supply_to_the_automotive_loads</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_storing_of_pv_power">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">storing_of_pv_power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_topologies">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_storing_of_pv_power"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">topologies</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_1000w/m2">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1000w/m2</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_irradiance">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_1000w/m2"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">irradiance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_cost">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_35_rs/hr"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_unit"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_rs/hr"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cost</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_aes_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_cost"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_overall_efficiency"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aes_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_35_rs/hr">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">35_rs/hr</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_rs/hr">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rs/hr</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_vehicle">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vehicle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_operation">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_vehicle"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_unit_cost">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit_cost</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_power_generation">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#function"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_unit_cost"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">power_generation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_consumption">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/quantity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_27_rs/hr"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_value"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_270_rs/hr_for_10_hours_of_operation"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fuel_consumption</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_hybrid_energy_system_for_aes_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#has_property"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_fuel_consumption"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_convention_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hybrid_energy_system_for_aes_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_27_rs/hr">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">27_rs/hr</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_270_rs/hr_for_10_hours_of_operation">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">270_rs/hr_for_10_hours_of_operation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_convention_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">convention_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_solar_power">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_hybrid_energy_system_for_aes_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solar_power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_engine_system">
+  <rdfs:subClassOf rdf:resource="http://w3id.org/gbo#system"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#part_of_directly"/>
+      <owl:someValuesFrom rdf:resource="http://cpsagila.cs.uni-kl.de/GENIALOnt#_aes_system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engine_system</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://cpsagila.cs.uni-kl.de/GENIALOnt#_overall_efficiency">
+  <rdfs:subClassOf rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/measure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">overall_efficiency</rdfs:label>
+</owl:Class>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://w3id.org/gbo#hardware_component"/>
+    <rdf:Description rdf:about="http://w3id.org/gbo#hardware_elementary_subpart"/>
+    <rdf:Description rdf:about="http://w3id.org/gbo#hardware_part"/>
+    <rdf:Description rdf:about="http://w3id.org/gbo#hardware_subpart"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>
